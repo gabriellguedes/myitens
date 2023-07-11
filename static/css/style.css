@@ -1,9 +1,66 @@
-* {
-  box-sizing: border-box;
+
+/*******************************************
+ 1.0 - Header 
+********************************************/
+#wrap-header {
+  z-index: 1000;
+  position: fixed;
+  display: block;
+  width: 100%;
+  max-height: 75px;
+  background-color: #233DFF;
+}
+/*********************************************
+  1.1 - Header - Logo 
+ *********************************************/
+.title-app{
+  color: white;
+  font-weight: bolder;
+  margin: 10px 0 !important;
+  font-size: 18pt;
+  display: block;
+  padding-left: 15px ;
+}
+/*********************************************
+  1.2 - Header - Search
+ *********************************************/
+.box-search-header{
+  width: 90% !important;
+}
+.filter {
+  width: 90%;
+  padding: 10px;
+  border-radius: 25px;
+  font-size: 15px;
+  border: none;
 }
 
-body {
+.search-icon{
+  background: #fff !important;
+  border: none !important;
+  border-radius: 25px 0 0 25px !important;
+}
+
+/*********************************************
+  1.3 - Header - Notificação/Login 
+ *********************************************/
+.notification-btn{
+  min-height: 40px;
+  max-width: 40px;
+  margin-top: 1px;
+  margin-right: 10px;
+}
+.box-header-user{
+  margin-right: 10px;
+}
+/****************************************************
+  2.0 - Main 
+****************************************************/
+main{
+  top: 50px;
+  position: relative;
   background:#191622;
+  /*background: #fff;*/
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -12,23 +69,6 @@ body {
   min-width: 100vh;
   margin: 0;
   padding-bottom: 100px;
-}
-
-h1 {
-  margin-bottom: 0;
-  text-align: center;
-}
-
-.filter-container {
-  margin-top: 20px;
-  width: 80vw;
-  max-width: 800px;
-}
-
-.filter {
-  width: 100%;
-  padding: 12px;
-  font-size: 15px;
 }
 
 .post {

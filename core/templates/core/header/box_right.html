@@ -1,0 +1,35 @@
+{% load static %}
+<div class="container">
+  <div class="row">
+    <div class="col"> 
+      <!-- Notificações -->
+      <div class="dropdown d-flex flex-row-reverse">
+        <button class="btn btn-dark btn-large rounded-circle notification-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fa-regular fa-bell"></i>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-dark">
+          <li class="dropdown-item">Notificações</a></li>
+          <li><hr class="dropdown-divider"></li>
+          
+        </ul> 
+      </div>
+    </div>
+
+
+    <!-- BOX Usuário -->
+    <div class="col-1 box-header-user">
+       <div class="dropdown d-flex flex-row-reverse">
+          <span class="" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="{% static 'img/user-default.png' %}" style="max-width:40px;" class="rounded-circle" alt="User Name">
+          </span>
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item active" href="#"><i class="fa-solid fa-user me-2"></i> Perfil</a></li>
+            <li><a class="dropdown-item" href="#"><i class="fa-sharp fa-solid fa-gear me-2"></i> Configurações e privacidade</a></li>
+            <li><a class="dropdown-item" href="#"><i class="fa-solid fa-circle-question me-2"></i> Ajuda e suporte</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#"><i class="fa-solid fa-arrow-right-from-bracket me-2"></i> Sair</a></li>
+          </ul>
+        </div>
+    </div>   
+ </div> 
+</div>

@@ -1,24 +1,15 @@
 {% extends 'core/base.html' %}
 {% load static %}
 {% block content %}
-	 <h1>My Itens</h1>
+	<main>	
+	    <div id="posts-container"></div>
 
-    <div class="filter-container">
-      <input 
-      type="text"
-      id="filter"
-      class="filter"
-      placeholder="Posts..."
-      >
-    </div>
+	    <div class="loader">
+	      <div class="circle"></div>
+	      <div class="circle"></div>
+	      <div class="circle"></div>
+	    </div>
+	</main>
 
-    <div id="posts-container"></div>
-
-    <div class="loader">
-      <div class="circle"></div>
-      <div class="circle"></div>
-      <div class="circle"></div>
-    </div>
-
-    <script src="{% static 'js/style.js' %}"></script>
+    
 {% endblock %}

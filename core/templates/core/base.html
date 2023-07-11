@@ -11,14 +11,25 @@
         <title>
          {% block title %} My Itens {% endblock title %}
         </title>
-
+        <!-- CSS Styles -->
         <link rel="shortcut icon" href="{% static 'img/favicon.ico' %} ">
         <link rel="stylesheet" href="{% static 'css/reset.css' %}" />
         <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/cdn.bootstrap.min.css' %}" />
+        <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
 
+         <!-- Our project just needs Font Awesome Free's Solid and Brand files -->
+        <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+        <script src="https://kit.fontawesome.com/9f73213e5b.js" crossorigin="anonymous"></script>
     </head>
     <body>
+        {% include 'core/header.html' %}
         {% block content %}
         {% endblock content %}
+        <script src="{% static 'js/style.js' %}"></script>
+        <script src="{% static 'js/cdn.jsdelivr.net_npm_bootstrap@5.2.3_dist_js_bootstrap.bundle.min.js' %}"></script>
+        
     </body>
 </html>
