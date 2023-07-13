@@ -1,0 +1,15 @@
+{% extends "core/base.html" %}
+{% load bootstrap %}
+{% load widget_tweaks %}
+{% block title %}Atualise sua Conta{% endblock %}
+{% block content %}
+<h3 class="alert alert-info">Editar sua Conta</h3>
+
+<form class="col-md-6" action="." method="post" enctype="multipart/form-data">
+    {{ user_form|bootstrap }}
+    {{ profile_form.management_form }}
+    {{ profile_form|bootstrap }}
+    {% csrf_token %}
+    <button class="btn btn-primary" type="submit">Atualizar</button>
+</form>
+{% endblock %}

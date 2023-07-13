@@ -1,0 +1,42 @@
+{% extends 'core/base.html'%}
+{% block title %}
+	{{block.super}} - Novo Cliente
+{% endblock title %}
+{% load bootstrap %}
+{% load widget_tweaks %}
+
+{% block content %}
+<section class="container py-4">
+	<h2 class="border-bottom title-2 pb-2 text-secondary">
+		<i class="fa-solid fa-user text-info mr-2"></i> Cadastrar novo Cliente
+	</h2>
+	
+	<div class="container">
+		<form class="py-4" method="POST" action=".">
+			 {% csrf_token %}
+			 <div class="row">
+			 	<div class="d-none">
+				 	{{ form_user.management_form }}
+					{% for item in form_user %}
+						<div class="col-md-4 d-none">{{item|bootstrap}}</div>
+					{% endfor %}
+				</div>
+			 	<div class="col-md-4">{{form.first_name|bootstrap}}</div>
+			 	<div class="col-md-4">{{form.email|bootstrap}}</div>
+			 	<div class="col-md-4">{{form.password|bootstrap}}</div>
+			 	
+				{{ form_user.management_form }}
+				{% for item in form_user %}
+					<div class="col-md-4">{{item.aniversario|bootstrap}}</div>
+					<div class="col-md-4">{{item.cpf|bootstrap}}</div>
+					<div class="col-md-4">{{item.telefone|bootstrap}}</div>
+				{% endfor %}
+
+			 </div>
+			
+			<button class="btn btn-info mr-3" type="submit">Criar Usuário</button>
+			<button class="btn btn-outline-info" type="button" onclick="location.href='{% url 'contas:cliente_list'%}'">Cancelar</button>
+		</form>
+	</div>	
+</section>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'core/base.html'%}
+{% load bootstrap %}
+{% load permission_tags %}
+
+{% block content %}
+	{% if user|has_role:'gerente' %}
+		<section class="container py-4">
+			<h2 class="border-bottom title-2 pb-2 text-secondary">
+				<i class="fa-solid fa-user text-info mr-2"></i> Cadastrar novo usuário
+			</h2>
+			
+			<div class="col-md-4">
+				<form method="POST" action=".">
+					 {% csrf_token %}
+					 {{ form_cargo.management_form }}
+
+					{% for field in form_cargo %}
+						<p>{{field|bootstrap}}</p>
+					{% endfor %}
+					{% for iten in form_user %}
+					 <p>{{iten|bootstrap}}</p>
+					{% endfor %}
+					{{ form_cliente.management_form }}
+
+					{% for field in form_cliente %}
+						<p>{{field|bootstrap}}</p>
+					{% endfor %}
+
+
+					<button class="btn btn-info" type="submit">Criar Usuário</button>
+					<button class="btn btn-outline-info" type="button" onclick="location.href='{% url 'contas:cliente_list'%}'">Cancelar</button>
+				</form>
+			</div>	
+		</section>
+	{% else %}
+	  {% include 'includes/permission_msg.html' %}
+	{% endif %}
+
+{% endblock %}

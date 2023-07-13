@@ -1,0 +1,20 @@
+{% extends 'core/base.html' %}
+{% block title%}
+	{{block.super}} - Apagar cliente
+{% endblock title %}
+{% load permission_tags %}
+{% block content %}
+	{% if cliente == request.user or user|can:'view_funcionario'%}
+		<section class="container py-4">
+			<p class="text-monospace">Tem certeza que deseja apagar o registro do '<span class="text-info">{{ cliente.first_name }} {{cliente.last_name}}</span>'?</p>
+				<form method="POST">
+					{% csrf_token %}
+					<button class="btn btn-info btn-md mr-3" type="submit">Sim, tenho certeza!</button>
+					<button class="btn btn-outline-info btn-md" type="reset" onclick="location.href='{% url 'contas:cliente_list' %}'">Não, desejo voltar!</button>
+				</form>
+		</section>
+	{% else %}
+	  {% include 'includes/permission_msg.html' %}
+	{% endif %}
+		
+{% endblock %}

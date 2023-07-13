@@ -1,0 +1,34 @@
+{% extends 'core/base.html' %}
+{% load permission_tags %}
+{% load bootstrap %}
+{% block title %}
+	{{block.super}} - Alterar Cargo
+{% endblock title %}
+{% block content %}
+	<section class="container py-3">
+		<form method="POST" action="." name="alterar-cargo-form" id="id_alterar-cargo-form">
+			{% csrf_token %}
+			<legend class="border-bottom pb-2 text-secondary title-2 mb-3">
+				<i class="fa-solid fa-pen text-info mr-2"></i>
+				<span class="font-weight-bold">Alterar cargo</span> 
+			</legend>
+			<div class="col-md-6 mb-3">
+				<p class="{{class}} text-center my-3">{{msg}}</p>
+				<label class="text-secondary">
+					Você esta alterando o cargo de
+					<span class="font-weight-bold text-info">{{obj.first_name}}</span>. 
+				</label>
+				<div class="col-md-6 p-0 mb-3">
+					{{form.management_form}}
+					{% for fields in form %}
+						{{fields|bootstrap}}
+					{% endfor %}
+				</div>
+			</div>
+			<div class="col">
+				<button class="btn btn-info mr-3" type="submit">Alterar</button>
+				<button class="btn btn-outline-info" type="button" onclick="location.href='{% url 'contas:cliente_detail' pk=obj.id %}'">Cancelar</button>
+			</div>
+		</form>
+	</section>
+{% endblock content %}

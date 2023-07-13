@@ -1,2 +1,2 @@
 # myitens
-network social
+network social for study 

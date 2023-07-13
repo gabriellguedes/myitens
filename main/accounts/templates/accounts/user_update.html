@@ -1,0 +1,104 @@
+{% extends 'core/base.html'%}
+{% load permission_tags %}
+{% load static %}
+{% load bootstrap %}
+{% load widget_tweaks %}
+
+{% block content %}
+	{% if request.user == cliente or user|can:'view_funcionario' %}
+		<section class="container py-4">
+			<h2 class="border-bottom pb-3 title-2 mb-4 text-secondary">
+				<i class="fa-solid fa-user text-info mr-2"></i> Atualizar
+			</h2>
+			<div class="container">
+				<form id="form_update_user" method="POST" action="."  enctype="multipart/form-data">
+					{% csrf_token %}			
+					<div class="mb-3">
+						{% if cliente.profile.all %}
+							{% for item in cliente.profile.all %}
+								{% if item.photo.url != None %}
+									<div class="w-100 d-flex justify-content-center mb-4">
+								        <span class="circle-pet-update">         
+								          <img class="mask" src="{{item.photo.url}}" alt="Foto de perfil do pet">
+								        </span>
+								    </div>
+							    {% else %}
+							    	<div class="w-100 d-flex justify-content-center mb-4">
+								        <span class="circle-pet-update">         
+								          <img class="mask" src="{% static 'img/user-default.png' %}" alt="Foto de perfil do pet">
+								        </span>
+								    </div>
+							    {% endif %}
+							{% endfor %}
+						{% else %}
+							<div class="w-100 d-flex justify-content-center mb-4">
+						        <span class="circle-pet-update">         
+						          <img class="mask" src="{% static 'img/user-default.png' %}" alt="Foto de perfil do pet">
+						        </span>
+						    </div>
+						{% endif %}
+						<div class='input-wrapper row'>        
+						    <span class="text-secondary w-100 text-center mb-3" id='file-name'></span>
+						    <div class="d-flex justify-content-center w-100">
+						      <label class="btn btn-outline-info" for='id_profile-0-photo'>
+						        Alterar Foto
+						      </label>
+						    </div>
+						    <input type="file" name="profile-0-photo" accept="image/*" id="id_profile-0-photo">
+						</div>
+					</div>
+					<legend class="border-bottom pb-3 title-2 mb-4 text-secondary">
+						<i class="fa-solid fa-user text-info mr-2"></i> Dados do Perfil
+					</legend>
+					<div id="form_update_02" class="form-inline mb-2">
+						{% for item in user_form %}
+							{{item.photo}}
+							<div class="form-group">
+								{{item|bootstrap}}
+							</div>
+						{% endfor %}
+					</div>
+					{{profile_form.management_form}}
+
+						<div id="form_update_01" class="form-inline">
+							{% for item in profile_form %}
+								<div class="form-group w-100">
+									{{item|bootstrap}}
+								</div>	
+							{% endfor %}
+						</div>
+							
+						
+					{{endereco.management_form}}
+					<div id="form_endereco" class="mb-5">
+						<legend class="border-bottom pb-3 mb-5 text-secondary">
+							<i class="fa-solid fa-location-dot text-info mr-1"></i> Endereço
+						</legend>
+						<div class="form-inline">
+							{% for i in endereco %}
+								<div id="itens_form_endereco" class="form-group w-100 mw-100 mb-2">
+									{{i|bootstrap}}
+								</div>
+							{% endfor %}
+						</div>
+					</div>
+					
+					<button class="btn btn-info mr-3" type="submit">Atualizar</button>
+					<button type="button" class="btn btn-outline-info" onclick="location.href='{% url 'core:home' %}'">Cancelar</button>
+				</form>
+			</div>	
+		</section>
+	{% else %}
+	  {% include 'includes/permission_msg.html' %}
+	{% endif %}
+{% endblock %}
+{% block js %}
+<script type="text/javascript">
+var $input_user   = document.getElementById('id_profile-0-photo'),
+        $fileName = document.getElementById('file-name');  
+  
+  $input_user.addEventListener('change', function(){
+  $fileName.textContent = this.value;
+  });
+  </script>
+{% endblock js %}

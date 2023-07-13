@@ -1,0 +1,30 @@
+{% extends 'core/base.html' %}
+{% block title %}
+	{{block.super}} - Remover Pet
+{% endblock title %}
+{% load permission_tags%}
+{% block content %}	
+	{% if user|can:'view_funcionario'%}
+		<section class="container py-4">
+				<form method="POST" action="." name="FormRemovePetTutor" id="FormRemovePetTutor">
+					{% csrf_token %}
+					<legend class="border-bottom pb-2 text-secondary">
+						<i class="fa-solid fa-trash text-info mr-2"></i>
+						<span class="font-weight-bold"> Remover Pet</span>
+					</legend>
+					<div class="py-4 px-2">
+						<label class="d-block text-secondary">
+							Tem certeza que deseja remover <span class="text-info">{{pet.nome}}</span> de <span class="text-info">{{tutor.first_name}}</span>?
+						</label>
+					</div>
+					<div class="px-2">
+						<button class="btn btn-info" type="submit">Sim, Tenho certeza!</button>
+						<button class="btn btn-outline-info" type="button" onclick="location.href='{% url 'contas:cliente_detail' pk=tutor.id %}'">Não, desejo voltar.</button>
+					</div>
+				</form>
+		</section>
+	{% else %}
+	  {% include 'includes/permission_msg.html' %}
+	{% endif %}
+	
+{% endblock %}

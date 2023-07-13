@@ -1,0 +1,197 @@
+{% extends 'core/base.html' %}
+{% load permission_tags %}
+
+{% block title%}
+	{{block.super}} - Usuários
+{% endblock title %}
+{% block content %}
+	{% if user|can:'view_funcionario' %}		
+		<section class="container py-4">
+			<div class="row border-bottom">
+				<div class="col-md-9 pl-3 d-block">
+					<h2 class="font-weight-bold title-2 text-secondary">
+						<i class="fa-solid fa-user text-info"></i>
+						Usuários Cadastrados
+					</h2>
+				</div>	
+				<div class="col-md-3 pr-3">
+					
+						<div>
+							{% if user|has_role:'gerente' %}
+								<a class="btn btn-info mb-3 mr-3" href="{% url 'contas:cliente_add' %}">
+									<i class="fa-solid fa-user-plus mr-2"></i>Usuário
+								</a>
+							{% endif %}
+							{% if user|can:'add_user_cliente' %}
+								<a class="btn btn-info mb-3" href="{% url 'contas:new_cliente_add' %}">
+									<i class="fa-solid fa-user-plus mr-2"></i>Cliente
+								</a>
+							{% endif %}
+						</div>
+						
+				</div>
+			</div>
+
+			{% if lista %}
+			<!-- LISTA DE Clientes CADASTRADOS -->	 
+			{% csrf_token %}
+			
+				<table class="table table-hover">
+				  <thead>
+				    <tr>
+				      <th class="text-info" scope="col">#</th>
+				      <th class="text-center text-secondary" scope="col"><i class="fa-solid fa-user text-info"></i> Nome</th>
+				      <th class="text-center text-secondary block-none" scope="col"><i class="fa-solid fa-envelope text-info"></i> Email</th>
+				      <th class="text-center text-secondary block-none" scope="col"><i class="fa-solid fa-plus text-info"></i> Conta</th>
+				      <th class="text-center text-secondary" scope="col"><i class="fa-solid fa-gears text-info"></i>  Ações</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				  	 {% for item in clientes %}
+					    <tr>
+					   	  <th class="text-secondary" scope="row">{{item.pk}}</th>
+					      
+					      <td class="text-center">
+					      	<a href="{% url 'contas:cliente_detail' pk=item.id %}">
+					      		{{ item.first_name}}
+					  		</a>
+					  	  </td>
+					  	 
+					      <td class="text-center text-secondary block-none">{{ item.email }}</td>
+					      {% for i in item.cargo.all %}
+					      	{% if item.pk == i.user.pk %}
+					       		<td class="text-center text-secondary block-none">{{ i.cargo }}</td>
+					       	{% endif %}
+					      {% endfor %}
+					      <td>
+							<div class="d-flex justify-content-center">
+								<button type="button" data-toggle="collapse" href="#consultaAccions{{item.id}}" role="button" aria-expanded="True" aria-controls="consultaAccions" class="btn btn-outline-secondary button_accion rounded-circle">
+									<i class="fa-solid fa-ellipsis"></i>
+								</button>
+							</div>
+							<div class=" collapse" id="consultaAccions{{item.id}}" aria-labelledby="consultaAccions">
+								<div class="row">
+									{% if user|can:'view_user_cliente' %}
+										<div class="d-flex justify-content-center w-100 my-2">
+							      			<a class="btn btn-outline-info rounded-circle py-2" href="{% url 'contas:cliente_detail' pk=item.id %}">
+							      				<i class="fa-regular fa-eye"></i> 
+							      			</a>
+						      			</div>
+						      		{% endif %}
+						      		{% if user|can:'update_user' %}
+						      			<div class="d-flex justify-content-center w-100">
+								      		<a class="btn btn-outline-info rounded-circle" href="{% url 'contas:user_update_for_adm' pk=item.id %}">
+								      			<i class="fa-regular fa-pen-to-square"></i>
+								      		
+								      		</a>
+							      		</div>
+							      	{% endif %}
+							      	{% if user|can:'delete_user' %}
+							      		<div class="d-flex justify-content-center w-100 my-2">
+								      		<a class="btn btn-outline-info rounded-circle" href="{% url 'contas:cliente_delete' pk=item.id %}">
+								      			<i class="fa-solid fa-trash"></i>
+								      			
+								      		</a>
+								      	</div>
+							      	{% endif %}
+					    		</div>	
+							</div>
+					      	<div class="text-center block-none">
+					      		{% if user|can:'view_user_cliente' %}
+					      			<a class="btn btn-outline-info rounded-circle py-2 mr-2" href="{% url 'contas:cliente_detail' pk=item.id %}">
+					      			<i class="fa-regular fa-eye"></i> 
+					      			
+					      			</a>
+					      		{% endif %}
+					      		{% if user|can:'update_user' %}
+						      		<a class="btn btn-outline-info rounded-circle mr-2" href="{% url 'contas:user_update_for_adm' pk=item.id %}">
+						      			<i class="fa-regular fa-pen-to-square"></i>
+						      		
+						      		</a>
+						      	{% endif %}
+						      	{% if user|can:'delete_user' %}
+						      		<a class="btn btn-outline-info rounded-circle" href="{% url 'contas:cliente_delete' pk=item.id %}">
+						      			<i class="fa-solid fa-trash"></i>
+						      			
+						      		</a>
+						      	{% endif %}
+					      	</div>	
+					      </td>
+					    </tr>
+				    {% endfor %}
+				  </tbody>
+				</table>
+
+			{% else %}
+			<p class="alert alert-warning mt-3">Sem itens na lista.</p>
+			{% endif%}	
+			<!-- PAGINATOR -->
+			<div class="row">
+				<!-- ITENS POR PÁGINA -->
+				<div class="col w-50">
+					<p class="text-secondary">Itens por página:</p>
+					<nav>
+						<ul class="pagination pagination-sm">
+						{% for qnt in items_list %}
+							{% if qnt == qnt_page %}
+								<li class="page-item active">
+									<a class="page-link" href="#" tabindex="-1">{{ qnt }}</a>
+								</li>	
+								
+							{% else %}
+								<li class="page-item">
+									<a class="page-link" href="{% url 'contas:cliente_list'%}?limit={{qnt}}">{{ qnt }}</a>
+								</li>	
+								
+							{% endif %}
+						{% endfor %}
+						</ul class="pagination pagination-sm">
+					</nav>
+				</div><!-- /Itens por página -->
+
+				<!-- Paginator -->
+				<div class="row m-0 align-items-end w-50">
+					
+					<nav  class="col m-0 d-flex justify-content-end" >
+					  <ul class="pagination pagination-sm">
+					  	{% if clientes.has_previous %}
+						  	<li class="page-item">
+						      <a class="page-link" href="{% url 'contas:cliente_list'%}?limit={{qnt_page}}&page={{clientes.previous_page_number}}"><i class="fa-solid fa-chevron-left"></i></a>
+						    </li>
+					    {% else %}
+						    <li class="page-item disabled">
+						      <a class="page-link"  href="#"><i class="fa-solid fa-chevron-left"></i></a>
+						    </li>
+					    {% endif %}
+					    
+					    {% for num in clientes.paginator.page_range %}
+					    	{% if num == clientes.number %}
+						    	<li class="page-item disabled">
+						    		<a class="page-link" href="#">{{ num }}</a>
+						    	</li>
+					    	{% else %}
+						    	<li class="page-item">
+						    		<a class="page-link" href="{% url 'contas:cliente_list'%}?limit={{qnt_page}}&page={{num}}">{{ num }}</a>
+						    	</li>
+					    	{% endif %}	
+					    {% endfor %}
+
+						{% if clientes.has_next %}	    
+						    <li class="page-item">
+						      <a class="page-link" href="{% url 'contas:cliente_list'%}?limit={{qnt_page}}&page={{clientes.next_page_number}}"><i class="fa-solid fa-chevron-right"></i></a>
+						    </li>
+						{% else %}
+							<li class="page-item disabled">
+						      <a class="page-link" href="#"><i class="fa-solid fa-chevron-right"></i></a>
+						    </li>    
+						{% endif %}
+					  </ul>
+					</nav>
+				</div>
+				<!-- /Paginator -->
+			</div>
+		</section>
+	{% else %}		
+	  {% include 'includes/permission_msg.html' %}
+	{% endif %}
+{% endblock %}

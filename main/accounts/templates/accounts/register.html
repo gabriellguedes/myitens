@@ -1,0 +1,28 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="row max-100 m-0">
+    <div class="w-50 d-flex align-items-center justify-content-center block-none">
+        <img class="block-none" src="{% static 'img/cadastro_img.svg' %}">
+    </div>
+    <div class="mt-3 p-3">
+        <section class="w-100 border p-4" id="box_cadastro" >
+            <h3 class="text-center text-secondary font-weight-bold border-bottom pb-3">Crie sua conta</h3>
+            <p class="text-secondary text-center pt-2">Bem vindo (a) a <span class="text-info">É o Bicho</span>. Vamos criar sua conta gratuita!</p>
+            <div class="mx-3 my-3">
+                {% include 'includes/form_cadastro.html' %}
+            </div> 
+            <p class="text-center px-4">
+                <small>Para saber como tratamos os seus dados pessoais, acesse o nosso <a class="text-info text-center" href="#">Aviso de Privacidade</a>.</small>
+            </p> 
+            <p class="text-center">
+                <small class="d-block px-4">Já possui uma conta? Clique<a class="text-info" href="{% url 'contas:login' %}"> aqui </a>para entrar.</small>
+            </p>     
+           
+
+        </section>
+    </div>  
+</div>
+
+{% endblock %}
