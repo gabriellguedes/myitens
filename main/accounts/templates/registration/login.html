@@ -10,7 +10,7 @@
 	<div class="mt-3 p-3">
 		<section class="w-100 border ml-3 p-4" id="box_login" >
 			<div class="mb-3">
-				<h3 class="text-center text-secondary font-weight-bold border-bottom pb-3">Entre na <span class="text-info">É o Bicho</span></h3>
+				<h3 class="text-center text-secondary font-weight-bold border-bottom pb-3"><span class="text-info">Sign In</span></h3>
 				<p class="text-secondary text-center mt-2">Entre com seu email cadastrado</p>
 			</div>	
 			<div class="mx-3 my-5">
@@ -18,13 +18,13 @@
 			</div>
 		
 			<small>
-				<a href="{% url 'contas:senha_reset' %}">Esqueceu sua senha?</a>
+				<a href="{% url 'accounts:senha_reset' %}">Esqueceu sua senha?</a>
 			</small>
 		
 			<p>
 				<small>
 					Ainda não tem uma conta? 
-					<a class="text-info" href="{% url 'contas:new_user' %}">Criar conta</a>
+					<a class="text-info" href="{% url 'accounts:new_user' %}">Criar conta</a>
 				</small>
 			</p>
 

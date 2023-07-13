@@ -18,7 +18,7 @@ class UserProfileForm(forms.ModelForm):
 class UserProfileUpdateForm(forms.ModelForm):
     birthday = forms.DateField(input_formats=['%d/%m/%Y'])
     class Meta:
-        model = Profile
+        model = UserProfile
         fields = '__all__'
         widgets = {'birthday': DateInput()}
 

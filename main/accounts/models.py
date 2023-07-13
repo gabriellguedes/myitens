@@ -5,13 +5,6 @@ from django.contrib.auth.models import User
 
 def upload_image_formater(instance, filename):
 	return f'{str(uuid.uuid4())}-{filename}'
-class Cargo(models.Model):
-	user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='cargo')
-	class Meta:
-		ordering = ('user',)
-
-	def __str__(self):
-		return '{} - {}'.format(self.user, self.cargo)
 
 # Create your models here.
 class UserProfile(models.Model):
