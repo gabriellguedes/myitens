@@ -1,3 +1,21 @@
+window.onload = function() {  
+    var button_pwd = document.getElementById("showpassword");
+
+    button_pwd.addEventListener("click", function(){
+        var tipo = document.getElementById("id_password");
+        var icon = document.getElementById("icon_show_password");
+
+        if(tipo.type === "password"){
+            tipo.type = "text";
+            icon.classList.remove("fa-eye");
+            icon.classList.add("fa-eye-slash");
+        }else{
+            tipo.type = "password";
+            icon.classList.remove("fa-eye-slash");
+            icon.classList.add("fa-eye");
+        }
+    });
+};    
 const postContainer = document.getElementById('posts-container')
 const loading = document.querySelector('.loader');
 const filter = document.getElementById('filter');
@@ -82,3 +100,5 @@ button.addEventListener("click", function() {
 
   field.classList.toggle("hide");
 });
+
+

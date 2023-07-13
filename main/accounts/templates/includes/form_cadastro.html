@@ -62,7 +62,21 @@
    
     <input type="hidden" value="6QS5FJzZUlWFfsI40rkpejqPShvQoGdX" name="csrfmiddlewaretoken">
     {% csrf_token %}
-    <button class="btn btn-info text-white" name="btn_criar_conta" type="submit" id="btn_new_user">Criar Conta</button>
+    <button class="btn btn-info text-white" name="btn_criar_conta" type="submit" id="btn_new_user" disabled>Criar Conta</button>
 </form>
+{% block js %}
+<script type="text/javascript">
+    var checkbox = document.getElementById("check_termos");
 
+    checkbox.addEventListener("click", function(){
+        var btn = document.getElementById("btn_new_user");
+
+        if (checkbox.checked == true) {
+            btn.removeAttribute('disabled');
+        }else{
+            btn.setAttribute('disabled', '');
+        }
+    });
+</script>
+{% endblock js%}
 

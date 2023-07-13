@@ -3,9 +3,11 @@
     <div class="row">
       <!-- LOGO -->
       <section class="col-4 col-md-3 text-left">
-        <label class="title-app">
-            My Itens
-        </label>
+        <a href="{% url 'core:home' %}">
+          <label class="title-app">
+              My Itens
+          </label>
+        </a>
       </section>
       {% include 'core/header/search.html' %}
       <!-- Box Info -->
