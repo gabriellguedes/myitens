@@ -74,3 +74,11 @@ window.addEventListener('scroll', () => {
 
 
 filter.addEventListener('input', filterPosts)
+
+var button = document.getElementById("responsive_button_search");
+
+button.addEventListener("click", function() {
+  var field = document.getElementById("container_search_field");
+
+  field.classList.toggle("hide");
+});

@@ -7,32 +7,7 @@
             My Itens
         </label>
       </section>
-      <!-- Search Bar -->
-      <section class="display-none col-5 col-md-6 align-self-center ">
-        <div class="d-flex justify-content-center">
-          <div class="input-group box-search-header d-flex justify-content-center">
-            <span class="input-group-text search-icon" id="basic-addon1">
-              <i class="fa fa-search text-secondary ps-2"></i>
-            </span>
-            <input type="text" id="filter" class="filter" placeholder="Pesquisar na My Itens ..."/>
-          </div>             
-        </div>
-      </section>  
-      <!-- Responsive Search Bar -->
-      <section class="display-block col-4 col-md-6 align-self-center ">
-        <div class="d-flex justify-content-left">
-          <div class="input-group box-search-header d-flex justify-content-left dropend">
-            <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
-              <span class="search-icon " >
-                <i class="fa fa-search text-secondary px-1"></i>
-              </span>
-            </a>
-            <ul class="dropdown-menu filter">
-              <input type="text" id="filter" class="filter" placeholder="Pesquisar na My Itens ..."/>
-            </ul>
-          </div>             
-        </div>
-      </section>  
+      {% include 'core/header/search.html' %}
       <!-- Box Info -->
       <section class="col-4 col-md-3 align-self-center">
        {% include 'core/header/box_right.html' %}

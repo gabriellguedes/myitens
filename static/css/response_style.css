@@ -1,4 +1,4 @@
-@media only screen and (max-width:  640px){
+@media only screen and (max-width: 768px){
 .display-none{
 	display: none !important;
 }
@@ -17,23 +17,30 @@
 }
 /*******	1.2 - Header - Search *********/
 .box-search-header{
-	justify-content: left!important;	
-	min-height: 30px;
-	min-width: 30px;
+    position: relative;
+    left: -60px;
 }
 .filter {
-    position: fixed;
-    z-index: 989;
+	position: fixed;
+    z-index: 988;
     text-align: center;
-    width: 100%;
-    top: 5px;
+    padding: 10px;
+    width: 70%;
+    margin-left: 15px;
+    top: 3px !important;
 }
 .search-icon{	
     z-index: 990;
     border-radius: 25px !important;
     padding: 10px;
-    top: 3px;
     position: relative;
+}
+.search-icon i{
+	position: relative;
+	z-index: 989;
+}
+.hide{
+	display: none !important;
 }
 /*******	1.3 - Header - Box User *******/
 

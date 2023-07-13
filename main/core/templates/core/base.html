@@ -23,12 +23,16 @@
         <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
         <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
         <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+
+        <!-- JavaScripts -->
+        
         <script src="https://kit.fontawesome.com/9f73213e5b.js" crossorigin="anonymous"></script>
     </head>
     <body>
         {% include 'core/header.html' %}
         {% block content %}
         {% endblock content %}
+        
         <script src="{% static 'js/style.js' %}"></script>
         <script src="{% static 'js/cdn.jsdelivr.net_npm_bootstrap@5.2.3_dist_js_bootstrap.bundle.min.js' %}"></script>
         
