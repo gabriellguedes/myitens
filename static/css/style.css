@@ -7,6 +7,9 @@ a{
 .display-block{
   display: none;
 }
+.box_shadow{
+  box-shadow: darkgray 2px 3px 7px 5px !important;
+}
 /*******************************************
  1.0 - Header 
 ********************************************/
@@ -16,8 +19,8 @@ a{
   display: block;
   width: 100%;
   max-height: 75px;
-  background-color: #233DFF;
-  border-bottom: 2px solid darkblue;
+  background-color: #0dcaf0;
+  border-bottom: 1px solid blueviolet;
 }
 /*********************************************
   1.1 - Header - Logo 
@@ -68,9 +71,8 @@ a{
 main{
   top: 50px;
   position: relative;
-  background:#191622;
   /*background: #fff;*/
-  color: #fff;
+  color: #000;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -78,14 +80,90 @@ main{
   margin: 0;
   padding-bottom: 100px;
 }
-
+/*******  2.1 - Main - Login  **********/
 #box_login{
   box-shadow: darkgray 2px 3px 7px 5px;
 }
+/*******  2.2 - Main - Cadastro  **********/
+#box_cadastro{
+  box-shadow: darkgray 2px 3px 7px 5px;
+}
 
+/* Customize the label (the container) */
+.container_checkbox {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 15px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container_checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  border: 1px solid #0dcaf0!important;
+  border-radius: 3px;
+  background-color: #FFF;
+}
+
+/* On mouse-over, add a grey background color */
+.container_checkbox:hover input ~ .checkmark {
+  background-color: #0dcaf0;
+  opacity: 0.65;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container_checkbox input:checked ~ .checkmark {
+  background-color: #0dcaf0!important;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container_checkbox input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container_checkbox .checkmark:after {
+  left: 7px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+/*******  2.3 - Main - Posts  **********/
 .post {
   position: relative;
-  background-color: #233DFF;
+  background-color: #FFF;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   border-radius: 3px;
   padding: 20px;
@@ -97,6 +175,7 @@ main{
 
 .post .post-title {
   margin: 0;
+  color: #0dcaf0 !important;
 }
 
 .post .post-body {
@@ -108,6 +187,7 @@ main{
   margin-left: 20px;
 }
 
+
 .post .number {
   position: absolute;
   top: -15px;
@@ -116,7 +196,7 @@ main{
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: #fff;
+  background: #000;
   color: #296ca8;
   display: flex;
   align-items: center;
@@ -138,7 +218,7 @@ main{
 
 
 .circle {
-  background-color: #fff;
+  background-color: #0dcaf0;
   width: 10px;
   height: 10px;
   border-radius: 50%;

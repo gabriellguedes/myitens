@@ -41,12 +41,7 @@
                 </button>
             </span>
         </div>  
-        <div class="d-none">
-            {{form_cargo.management_form}}
-            {% for i in form_cargo %}
-                {{i}}
-            {% endfor %}
-        </div>  
+        
     </div>
     <div class="mb-4">
         <label class="container_checkbox mb-3">Eu quero receber comunicações sobre conteúdo e novidades da My Itens por email e notificação.
@@ -64,19 +59,5 @@
     {% csrf_token %}
     <button class="btn btn-info text-white" name="btn_criar_conta" type="submit" id="btn_new_user" disabled>Criar Conta</button>
 </form>
-{% block js %}
-<script type="text/javascript">
-    var checkbox = document.getElementById("check_termos");
 
-    checkbox.addEventListener("click", function(){
-        var btn = document.getElementById("btn_new_user");
-
-        if (checkbox.checked == true) {
-            btn.removeAttribute('disabled');
-        }else{
-            btn.setAttribute('disabled', '');
-        }
-    });
-</script>
-{% endblock js%}
 

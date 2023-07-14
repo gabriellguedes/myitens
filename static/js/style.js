@@ -15,6 +15,19 @@ window.onload = function() {
             icon.classList.add("fa-eye");
         }
     });
+
+    var checkbox = document.getElementById("check_termos");
+
+    checkbox.addEventListener("change", function(){
+        var btn = document.getElementById("btn_new_user");
+
+        if (checkbox.checked == true) {
+            btn.removeAttribute('disabled');
+        }else{
+            btn.setAttribute('disabled', '');
+        }
+    });
+
 };    
 const postContainer = document.getElementById('posts-container')
 const loading = document.querySelector('.loader');
@@ -93,12 +106,12 @@ window.addEventListener('scroll', () => {
 
 filter.addEventListener('input', filterPosts)
 
-var button = document.getElementById("responsive_button_search");
 
-button.addEventListener("click", function() {
-  var field = document.getElementById("container_search_field");
+ var button = document.getElementById("responsive_button_search");
 
-  field.classList.toggle("hide");
-});
+    button.addEventListener("click", function() {
+      var field = document.getElementById("container_search_field");
 
+      field.classList.toggle("hide");
+    });
 
