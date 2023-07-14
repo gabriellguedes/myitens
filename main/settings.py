@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'fontawesomefree',
     'main.accounts',
     'main.core',
+    'main.posts',
 ]
 
 MIDDLEWARE = [
