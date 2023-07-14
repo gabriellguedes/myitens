@@ -2,7 +2,15 @@
 <header id="wrap-header" class="sticky-top">
     <div class="row">
       <!-- LOGO -->
-      <section class="col-4 col-md-3 text-left">
+      <section class="display-none w-25 text-left">
+        <a href="{% url 'core:home' %}">
+          <label class="title-app">
+              My Itens
+          </label>
+        </a>
+      </section>
+      <!-- LOGO RESPONSIVE -->
+       <section class="col w-auto display-block text-left">
         <a href="{% url 'core:home' %}">
           <label class="title-app">
               My Itens
@@ -11,7 +19,7 @@
       </section>
       {% include 'core/header/search.html' %}
       <!-- Box Info -->
-      <section class="col-4 col-md-3 align-self-center">
+      <section class="w-auto col align-self-center">
        {% include 'core/header/box_right.html' %}
       </section>
     </div>

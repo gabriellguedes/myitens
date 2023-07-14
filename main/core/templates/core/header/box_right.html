@@ -1,10 +1,10 @@
 {% load static %}
 {% if request.user.is_authenticated %}
 <div class="container">
-  <div class="row">
-    <div class="col-3 col-md-2 box-header-user"> 
+  <ul class="nav d-flex justify-content-end">
+    <li class="nav-item"> 
       <!-- Notificações -->
-      <div class="dropdown me-2">
+      <div class="dropdown">
         <button class="btn btn-large rounded-circle notification-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
           <i class="fa-regular fa-bell"></i>
         </button>
@@ -14,11 +14,11 @@
           
         </ul> 
       </div>
-    </div>
+    </li>
 
 
     <!-- BOX Usuário -->
-    <div class="col-3 col-md-2 box-header-user">
+    <li class="nav-item">
        <div class="dropdown">
           <span class="" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             <img src="{% static 'img/user.png' %}" style="max-width:40px;" class="rounded-circle" alt="User Name">
@@ -31,7 +31,7 @@
             <li><a class="dropdown-item" href="{% url 'accounts:logout' %}"><i class="fa-solid fa-arrow-right-from-bracket me-2"></i> Sair</a></li>
           </ul>
         </div>
-    </div>   
- </div> 
+    </li>   
+ </ul> 
 </div>
 {% endif %}

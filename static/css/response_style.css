@@ -18,7 +18,6 @@
 /*******	1.2 - Header - Search *********/
 .box-search-header{
     position: relative;
-    left: -60px;
 }
 .filter {
 	position: fixed;
