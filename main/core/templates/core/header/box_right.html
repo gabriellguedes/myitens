@@ -1,37 +1,77 @@
 {% load static %}
 {% if request.user.is_authenticated %}
-<div class="container">
-  <ul class="nav d-flex justify-content-end">
-    <li class="nav-item"> 
-      <!-- Notificações -->
-      <div class="dropdown">
-        <button class="btn btn-large rounded-circle notification-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <i class="fa-regular fa-bell"></i>
-        </button>
-        <ul class="dropdown-menu dropdown-menu">
-          <li class="dropdown-item">Notificações</a></li>
-          <li><hr class="dropdown-divider"></li>
-          
-        </ul> 
-      </div>
-    </li>
-
-
-    <!-- BOX Usuário -->
-    <li class="nav-item">
-       <div class="dropdown">
-          <span class="" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="{% static 'img/user.png' %}" style="max-width:40px;" class="rounded-circle" alt="User Name">
-          </span>
+<li class="nav-item display-none w-25 align-self-center">
+  <div class="container">
+    <ul class="nav d-flex justify-content-end">
+      <li class="nav-item"> 
+        <!-- Notificações -->
+        <div class="dropdown">
+          <button class="btn btn-large rounded-circle notification-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-regular fa-bell"></i>
+          </button>
           <ul class="dropdown-menu dropdown-menu">
-            <li><a class="dropdown-item" href="{% url 'accounts:user_profile' user.id %}"><i class="fa-solid fa-user me-2"></i> Perfil</a></li>
-            <li><a class="dropdown-item" href="#"><i class="fa-sharp fa-solid fa-gear me-2"></i> Configurações e privacidade</a></li>
-            <li><a class="dropdown-item" href="#"><i class="fa-solid fa-circle-question me-2"></i> Ajuda e suporte</a></li>
+            <li class="dropdown-item">Notificações</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="{% url 'accounts:logout' %}"><i class="fa-solid fa-arrow-right-from-bracket me-2"></i> Sair</a></li>
-          </ul>
+            
+          </ul> 
         </div>
-    </li>   
- </ul> 
-</div>
+      </li>
+
+
+      <!-- BOX Usuário -->
+      <li class="nav-item">
+         <div class="dropdown">
+            <span class="" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="{% static 'img/user.png' %}" style="max-width:40px;" class="rounded-circle" alt="User Name">
+            </span>
+            <ul class="dropdown-menu dropdown-menu">
+              <li><a class="dropdown-item" href="{% url 'accounts:user_profile' user.id %}"><i class="fa-solid fa-user me-2"></i> Perfil</a></li>
+              <li><a class="dropdown-item" href="#"><i class="fa-sharp fa-solid fa-gear me-2"></i> Configurações e privacidade</a></li>
+              <li><a class="dropdown-item" href="#"><i class="fa-solid fa-circle-question me-2"></i> Ajuda e suporte</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="{% url 'accounts:logout' %}"><i class="fa-solid fa-arrow-right-from-bracket me-2"></i> Sair</a></li>
+            </ul>
+          </div>
+      </li>   
+   </ul> 
+  </div>
+</li>
+
+<!-- Responsive Block -->
+<li class="nav-item display-block w-auto align-self-center">
+  <div class="container">
+    <ul class="nav d-flex justify-content-end">
+      <li class="nav-item"> 
+        <!-- Notificações -->
+        <div class="dropdown">
+          <button class="btn btn-large rounded-circle notification-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-regular fa-bell"></i>
+          </button>
+          <ul class="dropdown-menu dropdown-menu">
+            <li class="dropdown-item">Notificações</a></li>
+            <li><hr class="dropdown-divider"></li>
+            
+          </ul> 
+        </div>
+      </li>
+
+
+      <!-- BOX Usuário -->
+      <li class="nav-item">
+         <div class="dropdown">
+            <span class="" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="{% static 'img/user.png' %}" style="max-width:40px;" class="rounded-circle" alt="User Name">
+            </span>
+            <ul class="dropdown-menu dropdown-menu">
+              <li><a class="dropdown-item" href="{% url 'accounts:user_profile' user.id %}"><i class="fa-solid fa-user me-2"></i> Perfil</a></li>
+              <li><a class="dropdown-item" href="#"><i class="fa-sharp fa-solid fa-gear me-2"></i> Configurações e privacidade</a></li>
+              <li><a class="dropdown-item" href="#"><i class="fa-solid fa-circle-question me-2"></i> Ajuda e suporte</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="{% url 'accounts:logout' %}"><i class="fa-solid fa-arrow-right-from-bracket me-2"></i> Sair</a></li>
+            </ul>
+          </div>
+      </li>   
+   </ul> 
+  </div>
+</li>  
 {% endif %}

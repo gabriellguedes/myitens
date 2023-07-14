@@ -29,8 +29,11 @@
     </head>
     <body>
         {% include 'core/header.html' %}
-        {% block content %}
-        {% endblock content %}
+        <main>
+            {% block content %}
+            {% endblock content %}
+        </main>
+        
         
         <script src="{% static 'js/style.js' %}"></script>
         <script src="{% static 'js/cdn.jsdelivr.net_npm_bootstrap@5.2.3_dist_js_bootstrap.bundle.min.js' %}"></script>

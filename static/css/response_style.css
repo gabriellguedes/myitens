@@ -23,10 +23,10 @@
 	position: fixed;
     z-index: 988;
     text-align: center;
-    padding: 10px;
-    width: 70%;
+    padding: 9px;
+    width: 68%;
     margin-left: 15px;
-    top: 3px !important;
+    top: 4px !important;
 }
 .search-icon{	
     z-index: 990;
