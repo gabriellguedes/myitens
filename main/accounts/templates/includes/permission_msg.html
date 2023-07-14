@@ -1,0 +1,35 @@
+<section class="container d-flex justify-content-center my-5">
+    <div class="col-md-9 ">
+      <div class="border dados-pet mb-4">
+        <div class="dados-pet-header">
+          <label class="d-block text-center alert alert-danger ">
+              <i class="fa-solid fa-triangle-exclamation mr-2"></i> Atenção
+          </label>    
+        </div>
+        <div class="px-3">
+          <label class="text-secondary d-block mb-3 text-center">
+
+            <p class="mb-3">
+              <span class="font-weight-bold text-info">{{ request.user.first_name }}</span>
+              você não tem permissão para acessar essa página!
+            </p>
+             
+            <p class="px-4">
+              <small class="text-secondary d-block mb-3 text-justify">
+                Caso você seja uma pesssoa autorizada entre em contato com o administrador do sistema para verificar se alguma das suas permissões foram revogadas.
+              </small>
+            </p>
+            <p class="text-justify px-4"> 
+              <small class="text-info font-italic">Lamentamos a inconveniência.</small>
+            </p>     
+          </label>
+
+          <div class="text-secondary d-flex justify-content-center mb-4">
+            <a class="btn btn-outline-info" href="{% url 'core:home' %}">
+              <i class="fa-solid fa-chevron-left mr-2"></i> Voltar
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>  
+</section>

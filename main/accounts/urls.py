@@ -50,14 +50,10 @@ urlpatterns = [
 
 # Cliente 
     path('new_client/', views.new_user, name='new_user'),
-    path('new_user/', views.user_add, name='cliente_add'),
-    path('novo_cliente/', views.cliente_add, name='new_cliente_add'),
-    path('user_list/', views.user_list, name='cliente_list'),
-    path('use_profile/<int:pk>/', views.user_profile, name='user_profile'),
-    path('user_detail/<int:pk>/', views.user_detail, name='cliente_detail'),
+    path('user_list/', views.user_list, name='user_list'),
+    path('user_detail/<int:pk>/', views.user_detail, name='user_detail'),
     path('user_update/<int:pk>/', views.user_update, name='user_update'),
-    path('user_update_for_adm/<int:pk>/', views.user_update_for_adm, name='user_update_for_adm'),
-    path('user_delete/<int:pk>/', views.user_delete, name='cliente_delete'),
+    path('user_delete/<int:pk>/', views.user_delete, name='user_delete'),
 
    
     
