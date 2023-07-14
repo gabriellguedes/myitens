@@ -5,10 +5,10 @@
     <div class="col-3 col-md-2 box-header-user"> 
       <!-- Notificações -->
       <div class="dropdown me-2">
-        <button class="btn btn-dark btn-large rounded-circle notification-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <button class="btn btn-large rounded-circle notification-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
           <i class="fa-regular fa-bell"></i>
         </button>
-        <ul class="dropdown-menu dropdown-menu-dark">
+        <ul class="dropdown-menu dropdown-menu">
           <li class="dropdown-item">Notificações</a></li>
           <li><hr class="dropdown-divider"></li>
           
@@ -21,10 +21,10 @@
     <div class="col-3 col-md-2 box-header-user">
        <div class="dropdown">
           <span class="" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="{% static 'img/user-default.png' %}" style="max-width:40px;" class="rounded-circle" alt="User Name">
+            <img src="{% static 'img/user.png' %}" style="max-width:40px;" class="rounded-circle" alt="User Name">
           </span>
-          <ul class="dropdown-menu dropdown-menu-dark">
-            <li><a class="dropdown-item active" href="{% url 'accounts:user_profile' user.id %}"><i class="fa-solid fa-user me-2"></i> Perfil</a></li>
+          <ul class="dropdown-menu dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'accounts:user_profile' user.id %}"><i class="fa-solid fa-user me-2"></i> Perfil</a></li>
             <li><a class="dropdown-item" href="#"><i class="fa-sharp fa-solid fa-gear me-2"></i> Configurações e privacidade</a></li>
             <li><a class="dropdown-item" href="#"><i class="fa-solid fa-circle-question me-2"></i> Ajuda e suporte</a></li>
             <li><hr class="dropdown-divider"></li>

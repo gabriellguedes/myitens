@@ -61,6 +61,8 @@ a{
   max-width: 40px;
   margin-top: 1px;
   margin-right: 10px;
+  background: #FFF !important;
+  color: #556080 !important;
 }
 .box-header-user{
   margin-right: 10px;
