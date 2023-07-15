@@ -2,22 +2,22 @@
 {% load static %}
 {% block content %}
 
-<div class="d-flex justify-content-center">
-    <div class="col-7 display-none">
+<div class="w-100 d-flex justify-content-center">
+    <div class="display-none">
         <img class="" src="">
     </div>
-    <div class="col-11 col-md-3 mt-5">
-        <section class="border rounded p-3 box_shadown" id="box_cadastro" >
+    <div class="mt-5" id="box_cadastro">
+        <section class="border rounded p-3"  >
             <h3 class="text-center text-secondary font-weight-bold border-bottom pb-3">Crie sua conta</h3>
             <p class="text-secondary text-center pt-2">Bem vindo (a) a <span class="text-info">My Itens</span>. Vamos criar sua conta gratuita!</p>
             <div class="mx-3 my-3">
                 {% include 'includes/form_cadastro.html' %}
             </div> 
-            <p class="text-center px-4">
+            <p class="text-center px-2">
                 <small>Para saber como tratamos os seus dados pessoais, acesse o nosso <a class="text-info text-center" href="#">Aviso de Privacidade</a>.</small>
             </p> 
             <p class="text-center">
-                <small class="d-block px-4">Já possui uma conta? Clique<a class="text-info" href="{% url 'accounts:login' %}"> aqui </a>para entrar.</small>
+                <small class="d-block px-2">Já possui uma conta? Clique<a class="text-info" href="{% url 'accounts:login' %}"> aqui </a>para entrar.</small>
             </p>     
            
 

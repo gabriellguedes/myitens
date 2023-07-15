@@ -84,11 +84,23 @@ main{
 }
 /*******  2.1 - Main - Login  **********/
 #box_login{
+  display: flex;
+  justify-content: end;
+}
+#box_login section{
   box-shadow: darkgray 2px 3px 7px 5px;
+  max-width: 450px;
+  min-width: 400px;
 }
 /*******  2.2 - Main - Cadastro  **********/
 #box_cadastro{
+  display: flex;
+  justify-content: end;
+}
+#box_cadastro section{
   box-shadow: darkgray 2px 3px 7px 5px;
+  max-width: 450px;
+  min-width: 350px;
 }
 
 /* Customize the label (the container) */

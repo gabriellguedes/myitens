@@ -50,6 +50,22 @@ main{
 	max-width: 100% !important;
 	top:35px;
 }
+/*******  2.1 - Main - Login  **********/
+#box_login{
+  display: flex;
+  justify-content: center;
+}
+#box_login section{
+    max-width: 380px;
+}
+/*******  2.2 - Main - Cadastro  **********/,
+#box_cadastro{
+  display: flex;
+  justify-content: center;
+}
+#box_cadastro section{
+    max-width: 380px;
+}
 /*******************************************
  	3.0 - Footer
  *******************************************/
