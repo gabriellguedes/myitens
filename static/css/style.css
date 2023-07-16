@@ -4,6 +4,9 @@ body{
 a{
   text-decoration: none !important;
 }
+input{
+  outline: none;
+}
 .display-block{
   display: none;
 }

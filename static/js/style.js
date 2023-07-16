@@ -9,10 +9,14 @@ window.onload = function() {
             tipo.type = "text";
             icon.classList.remove("fa-eye");
             icon.classList.add("fa-eye-slash");
+            icon.removeAttribute('title');
+            icon.setAttribute('title', 'Esconder Senha');
         }else{
             tipo.type = "password";
             icon.classList.remove("fa-eye-slash");
             icon.classList.add("fa-eye");
+            icon.removeAttribute('title');
+            icon.setAttribute('title', 'Mostrar Senha');
         }
     });
 

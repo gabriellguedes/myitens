@@ -49,7 +49,7 @@ urlpatterns = [
          name='password_reset_complete'),
 
 # Cliente 
-    path('new_client/', views.new_user, name='new_user'),
+    path('new_user/', views.new_user, name='new_user'),
     path('user_list/', views.user_list, name='user_list'),
     path('user_detail/<int:pk>/', views.user_detail, name='user_detail'),
     path('user_update/<int:pk>/', views.user_update, name='user_update'),

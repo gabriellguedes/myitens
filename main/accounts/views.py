@@ -1,12 +1,15 @@
 from django.shortcuts import render, redirect
 from django.db import IntegrityError
 from django.core.exceptions import ObjectDoesNotExist
+from main.core.views import newsletter_add
 from django.forms import inlineformset_factory
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
+from .models import UserProfile
 from .forms import *
+from django.forms import inlineformset_factory
 
 # Novo Cliente(Cadastro Feito pelo próprio cliente)
 def new_user(request):
@@ -14,13 +17,17 @@ def new_user(request):
 	context={}
 	if request.method == 'GET':
 		form = UserRegistrationForm()
-		
+		form_profile_factory = inlineformset_factory(User, UserProfile, form=UserProfileForm, extra=1, can_delete=False)
+		form_user = form_profile_factory()
 		context = {
 			'form': form,
+			'form_user': form_user,
 		}
 		return render(request, template_name, context=context)
 	elif request.method == 'POST':
 		form = UserRegistrationForm(request.POST)
+		form_profile_factory = inlineformset_factory(User, UserProfile, form=UserProfileForm, extra=1, can_delete=False)
+		form_user = form_profile_factory(request.POST)
 		# Condição de tamanho da senha
 		if len(request.POST['password']) < 6:
 			context['msg'] = 'Senha deve conter no mínimo 6 caracteres.'
@@ -33,16 +40,25 @@ def new_user(request):
 				new_user.set_password(form.cleaned_data['password'])
 				new_user.username = new_user.email				
 				new_user.save()
+				form_user.instance = new_user
+				new_profile = form_user.save()
 
-				assign_role(new_user, 'cliente')
+				if request.POST.get('email_market', False):
+					nome = new_user.first_name
+					email = new_user.email
+					newsletter_add(nome, email)
+				else:
+					pass
+				
 				user = authenticate(username=new_user.username, password=request.POST['password'])
 				if user is not None:
 					login(request, user)
-					return HttpResponseRedirect(reverse('accounts:cliente_detail', kwargs={'pk': new_user.id}))
+					return HttpResponseRedirect(reverse('accounts:user_detail', kwargs={'pk': new_user.id}))
 				else:
 					form = UserRegistrationForm()
 					context = {
 						'form': form,
+						'form_user': form_user,
 						'msg': 'Algo deu errado!',
 						'class': 'alert alert-primary',
 					}
@@ -51,6 +67,7 @@ def new_user(request):
 				form = UserRegistrationForm()
 				context = {
 					'form': form,
+					'form_user': form_user,
 					'msg': 'Email já cadastrado.',
 					'class': 'alert alert-warning',
 				}
@@ -62,6 +79,11 @@ def new_user(request):
 				'class': 'alert alert-warning',
 			}
 			return render(request, template_name, context=context)
+# Completar Perfil de Usuário
+def profileComplete(request, pk):
+	template_name = 'accounts/profileComplete.html'
+	pass
+
 # Listar Todos os Clientes Cadastrados no Sistema
 def user_list(request):
 	template_name = 'accounts/user_list.html'
