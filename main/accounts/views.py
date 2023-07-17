@@ -12,7 +12,8 @@ from .forms import *
 from django.forms import inlineformset_factory
 
 """ 
-	Criando um novo usuário e perfil (Cadastro realizado pelo próprio cliente)
+	Criando um novo usuário, perfil e adicionando-o a lista de emails.
+	(Cadastro realizado pelo próprio cliente)
 """
 def new_user(request):
 	template_name='accounts/register.html'
@@ -95,44 +96,6 @@ def profileComplete(request, pk):
 	template_name = 'accounts/profileComplete.html'
 	pass
 
-# Listar Todos os Clientes Cadastrados no Sistema
-def user_list(request):
-	template_name = 'accounts/user_list.html'
-	if request.user.is_authenticated:
-		user = request.user
-	else:
-		user = ''
-
-	obj_users = User.objects.all()
-
-	parametro_page = request.GET.get('page', '1')
-	parametro_limit = request.GET.get('limit', '5')
-
-	if not (parametro_limit.isdigit() and int(parametro_limit)>0):
-		parametro_limit = '10'
-
-	clientes = User.objects.get_queryset().order_by('id')
-	clientes_paginator = Paginator(clientes, parametro_limit)
-
-	lista = User.objects.all()
-	profile = Profile.objects.all()
-	try:
-		page = clientes_paginator.page(parametro_page)
-
-	except (EmptyPage, PageNotAnInteger):
-		page = clientes_paginator.page(1)
-
-
-	context = {
-		'items_list': ['5','10', '20', '30', '50'],
-        'qnt_page':parametro_limit,
-        'clientes': page,
-		'lista': lista,
-		'user': user,
-		'profile': profile,
-	}
-	return render(request, template_name, context=context)
-
 """ Detail Cliente acesso pelo cliente """
 def user_detail(request, pk):
 	template_name = 'accounts/user_detail.html'
@@ -209,6 +172,45 @@ def user_update(request, pk):
     			
     		}
     		return render(request,  template_name, context=context)
+
+
+# Listar Todos os Clientes Cadastrados no Sistema
+def user_list(request):
+	template_name = 'accounts/user_list.html'
+	if request.user.is_authenticated:
+		user = request.user
+	else:
+		user = ''
+
+	obj_users = User.objects.all()
+
+	parametro_page = request.GET.get('page', '1')
+	parametro_limit = request.GET.get('limit', '5')
+
+	if not (parametro_limit.isdigit() and int(parametro_limit)>0):
+		parametro_limit = '10'
+
+	clientes = User.objects.get_queryset().order_by('id')
+	clientes_paginator = Paginator(clientes, parametro_limit)
+
+	lista = User.objects.all()
+	profile = Profile.objects.all()
+	try:
+		page = clientes_paginator.page(parametro_page)
+
+	except (EmptyPage, PageNotAnInteger):
+		page = clientes_paginator.page(1)
+
+
+	context = {
+		'items_list': ['5','10', '20', '30', '50'],
+        'qnt_page':parametro_limit,
+        'clientes': page,
+		'lista': lista,
+		'user': user,
+		'profile': profile,
+	}
+	return render(request, template_name, context=context)
 #Apagar Cliente   
 def user_delete(request, pk):
 	template_name = 'accounts/user_delete.html'

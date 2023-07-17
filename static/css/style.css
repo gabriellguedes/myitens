@@ -176,8 +176,81 @@ main{
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
+/*******  2.4 - Main - Profile User  **********/
+#header_profile{
+  max-width: 1250px;
+}
+#header_profile nav{
+  margin-left: 25px;
+  margin-right: 25px;
+}
+#cover_photo{
+  
+  max-height: 462px;
+}
+  #cover_photo img{
+  width: 100%;
+  }
+  #cover_photo div{
+    position: relative;
+    top: -80px;
+  }
+    #cover_photo div button{
+     opacity: 0.9;
+    }
+    #cover_photo div button i{
+     color: #FFF;
+    }
+    #cover_photo div button label{
+     color: #FFF;
+     font-weight: bold;
+    }
 
-/*******  2.3 - Main - Posts  **********/
+#box_profile_picture{
+  display: flex;
+  margin-left: 25px;
+  margin-right: 25px;
+}
+  #profile_picture{
+    max-width: 180px;
+    max-height: 180px;
+    overflow: hidden;
+    border: 3px solid deepskyblue;
+    border-radius: 50%;
+  }
+    #profile_picture div img{
+      width: 100%;
+      height: 180px;
+      object-fit:cover;
+    }
+    #profile_picture a{
+      position: absolute;
+      border-radius: 50%;
+      z-index: 950;
+      opacity: 0.9;
+      margin: -65px 0 0 135px;
+    }
+  #profile_picture_title{
+    display: inline-block;
+    min-height: 180px;
+    min-width: 600px;
+  }
+    #profile_picture_title h1{
+      font-weight: bold;
+    }  
+  #profile_picture_edit{
+    display: inline-block;
+    min-height: 180px;
+    min-width: 400px;
+  }
+    #profile_picture_edit div button{
+      opacity: 0.9;
+    }
+      #profile_picture_edit div button label{
+        font-weight: bold;
+        color: #FFF;
+      }
+/*******  2.4 - Main - Posts  **********/
 .post {
   position: relative;
   background-color: #FFF;
