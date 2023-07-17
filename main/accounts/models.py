@@ -11,8 +11,8 @@ class UserProfile(models.Model):
 	user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='user')
 	photoProfile = models.ImageField('', upload_to=upload_image_formater, blank=False, null=False)
 	photoCapa = models.ImageField('', upload_to=upload_image_formater, blank=False, null=False)
-	phone = models.CharField('Telefone', max_length=16, blank=True, null=True)
-	birthday = models.DateField('Aniversário')
+	phone = models.CharField('Telefone', max_length=16, blank=False, null=False)
+	birthday = models.DateField('Aniversário', blank=False, null=False, auto_now_add=True)
 	bio = models.TextField('Bio', max_length=200, blank=False, null=False)
 	created = models.DateTimeField( 'criado_em', auto_now_add=True, auto_now=False)
 

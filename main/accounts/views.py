@@ -26,7 +26,7 @@ def new_user(request):
 		return render(request, template_name, context=context)
 	elif request.method == 'POST':
 		form = UserRegistrationForm(request.POST)
-		form_profile_factory = inlineformset_factory(User, UserProfile, form=UserProfileForm, extra=1, can_delete=False)
+		form_profile_factory = inlineformset_factory(User, UserProfile, form=UserProfileForm, extra=0, can_delete=False)
 		form_user = form_profile_factory(request.POST)
 		# Condição de tamanho da senha
 		if len(request.POST['password']) < 6:
@@ -34,14 +34,17 @@ def new_user(request):
 			context['class'] = 'alert alert-info'
 			return render(request, template_name, context=context)
 		#Validando Formulários
-		if form.is_valid():
+		if form.is_valid() and form_user.is_valid():
 			try:
 				new_user = form.save(commit=False)
 				new_user.set_password(form.cleaned_data['password'])
 				new_user.username = new_user.email				
 				new_user.save()
 				form_user.instance = new_user
-				new_profile = form_user.save()
+				#form_user.save(commit=False)
+				#form_user.objects.create(user=new_user)
+				form_user.save()
+
 
 				if request.POST.get('email_market', False):
 					nome = new_user.first_name
@@ -124,11 +127,21 @@ def user_list(request):
 # Detail Cliente acesso pelo cliente
 def user_detail(request, pk):
 	template_name = 'accounts/user_detail.html'
-	user = request.user
-	context = {
-		'user': user,
-	}
-	return render(request, template_name, context=context)
+	user = User.objects.get(id=pk)
+	try:
+		profile = UserProfile.objects.get(user=user)
+		context = {
+			'user': user,
+			'profile': profile,
+		}
+		return render(request, template_name, context=context)
+	except ObjectDoesNotExist:	
+		profile = UserProfile.objects.create(user=user)
+		context = {
+			'user': user,
+			'profile': profile,
+		}
+		return render(request, template_name, context=context)
 # Atualização Cliente Feita pelo Cliente
 def user_update(request, pk):
     template_name = 'accounts/user_update.html'
