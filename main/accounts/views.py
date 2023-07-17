@@ -11,7 +11,9 @@ from .models import UserProfile
 from .forms import *
 from django.forms import inlineformset_factory
 
-# Novo Cliente(Cadastro Feito pelo próprio cliente)
+""" 
+	Criando um novo usuário e perfil (Cadastro realizado pelo próprio cliente)
+"""
 def new_user(request):
 	template_name='accounts/register.html'
 	context={}
@@ -41,18 +43,23 @@ def new_user(request):
 				new_user.username = new_user.email				
 				new_user.save()
 				form_user.instance = new_user
-				#form_user.save(commit=False)
-				#form_user.objects.create(user=new_user)
 				form_user.save()
 
-
+				# Verificando se o usuário aceitou receber emails e add o email do usuário a lista de newsletter.
 				if request.POST.get('email_market', False):
 					nome = new_user.first_name
 					email = new_user.email
 					newsletter_add(nome, email)
 				else:
 					pass
-				
+
+				#Verificando se o perfil do Usuário foi criado e vinculado ao usuário.	
+				try:
+					profile = UserProfile.objects.get(user=new_user)
+				except ObjectDoesNotExist:	
+					profile = UserProfile.objects.create(user=new_user)
+
+				# Realizando o login apoś a criação do usuário e perfil	
 				user = authenticate(username=new_user.username, password=request.POST['password'])
 				if user is not None:
 					login(request, user)
@@ -82,6 +89,7 @@ def new_user(request):
 				'class': 'alert alert-warning',
 			}
 			return render(request, template_name, context=context)
+
 # Completar Perfil de Usuário
 def profileComplete(request, pk):
 	template_name = 'accounts/profileComplete.html'
@@ -124,24 +132,18 @@ def user_list(request):
 		'profile': profile,
 	}
 	return render(request, template_name, context=context)
-# Detail Cliente acesso pelo cliente
+
+""" Detail Cliente acesso pelo cliente """
 def user_detail(request, pk):
 	template_name = 'accounts/user_detail.html'
 	user = User.objects.get(id=pk)
-	try:
-		profile = UserProfile.objects.get(user=user)
-		context = {
-			'user': user,
-			'profile': profile,
-		}
-		return render(request, template_name, context=context)
-	except ObjectDoesNotExist:	
-		profile = UserProfile.objects.create(user=user)
-		context = {
-			'user': user,
-			'profile': profile,
-		}
-		return render(request, template_name, context=context)
+	profile = UserProfile.objects.get(user=user)
+	context = {
+		'user': user,
+		'profile': profile,
+	}
+	return render(request, template_name, context=context)
+
 # Atualização Cliente Feita pelo Cliente
 def user_update(request, pk):
     template_name = 'accounts/user_update.html'
