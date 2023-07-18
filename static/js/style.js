@@ -119,3 +119,39 @@ filter.addEventListener('input', filterPosts)
       field.classList.toggle("hide");
     });
 
+
+function editBio(){
+    const modal = document.getElementById('modal-container-bio')
+    modal.classList.add('mostrar')
+
+    modal.addEventListener('click', (e) =>{
+        if (e.target.id == 'modal-container' || e.target.id == "fechar" || e.target.id=="btn-fechar"){
+            modal.classList.remove('mostrar')
+            localStorage.fechaModal = 'modal-container'
+        }
+    })
+}
+
+function editCapa(){
+    const modal = document.getElementById('modal-container-capa')
+    modal.classList.add('mostrar')
+
+    modal.addEventListener('click', (e) =>{
+        if (e.target.id == 'modal-container' || e.target.id == "fechar"){
+            modal.classList.remove('mostrar')
+            localStorage.fechaModal = 'modal-container'
+        }
+    })
+}
+
+function editProfile(){
+    const modal = document.getElementById('modal-container-profile')
+    modal.classList.add('mostrar')
+
+    modal.addEventListener('click', (e) =>{
+        if (e.target.id == 'modal-container' || e.target.id == "fechar"){
+            modal.classList.remove('mostrar')
+            localStorage.fechaModal = 'modal-container'
+        }
+    })
+}

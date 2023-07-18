@@ -1,0 +1,21 @@
+{% load static %}
+<div id="modal-container-bio" class="wmodal-container">
+    <div class="wmodal">
+        <button class="fechar" id="fechar">X</button>
+        {% if msg %}
+            <p>{{msg}}</p>
+        {% endif%}
+       	<h1 class="border-bottom border-secondary text-info fw-bold mb-3 pb-2">Editar biografia</h1>
+       	<form id="form_update_bio" method="POST" action="."  enctype="multipart/form-data">
+                    {% csrf_token %} 
+                    
+                    {% for item in form_bio %}
+                        <p>{{item}}</p>
+                    {% endfor%}
+                        
+           	<button class="btn btn-info text-white me-3" type="submit">Alterar</button>
+           	<button id="btn-fechar" class="btn btn-outline-danger">Cancelar</button>
+                    
+        </form> 
+    </div>
+</div>

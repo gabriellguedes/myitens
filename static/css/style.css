@@ -22,7 +22,7 @@ input{
   display: block;
   width: 100%;
   max-height: 75px;
-  background-color: #0dcaf0;
+  /*background-color: #0dcaf0;*/
   border-bottom: 1px solid blueviolet;
 }
 /*********************************************
@@ -176,7 +176,7 @@ main{
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
-/*******  2.4 - Main - Profile User  **********/
+/*******  2.3 - Main - Profile User  **********/
 #header_profile{
   max-width: 1250px;
 }
@@ -184,6 +184,7 @@ main{
   margin-left: 25px;
   margin-right: 25px;
 }
+/*******  2.3.1 - Photo de Capa **********/
 #cover_photo{
   
   max-height: 462px;
@@ -205,7 +206,7 @@ main{
      color: #FFF;
      font-weight: bold;
     }
-
+/*******  2.3.2 - Photo do Usuário **********/
 #box_profile_picture{
   display: flex;
   margin-left: 25px;
@@ -218,23 +219,31 @@ main{
     border: 3px solid deepskyblue;
     border-radius: 50%;
   }
+    #profile_picture div{
+    }
     #profile_picture div img{
       width: 100%;
       height: 180px;
       object-fit:cover;
     }
-    #profile_picture a{
+    #profile_picture button{
       position: absolute;
       border-radius: 50%;
       z-index: 950;
       opacity: 0.9;
       margin: -65px 0 0 135px;
     }
-  #profile_picture_title{
-    display: inline-block;
+  #profile_picture_title{    
     min-height: 180px;
     min-width: 600px;
-  }
+    padding-left: 20px;
+    padding-top: 50px;
+  } #profile_picture_title ul li a{
+    }
+    #profile_picture_title div{
+      display: block;
+      width: 100%;
+    }
     #profile_picture_title h1{
       font-weight: bold;
     }  
@@ -250,6 +259,97 @@ main{
         font-weight: bold;
         color: #FFF;
       }
+#main_profile{
+  max-width: 100%;
+  margin: 0 20px;
+  display: flex;
+  padding-top: 10px;
+}      
+/*******  2.3.3 - Informações do usuário **********/
+  #info_user_profile{
+    width: 38%;
+    margin-right: 15px;     
+  }
+/*******  2.3.4 - Informações do usuário **********/
+  #timeline_in_profile{
+    width: 57%;
+  }
+
+  /*******  2.3.5 - Informações do usuário **********/
+  .wmodal-container{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #0000004b;
+    z-index: 999;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+.wmodal{
+    width: 60%;
+    min-width:400px;
+    min-height: 200px;
+    background-color: #ffffff62;
+    backdrop-filter: blur(10px);
+    padding: 50px;
+    border-radius: 10px;
+}
+
+.fechar{
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    background-color: #ff0000;
+    color: #fff;
+    font-weight: 700;
+    font-size: 14pt;
+    cursor: pointer;
+}
+
+.wmodal h1{
+    margin-bottom: 20px;
+}
+
+@keyframes animate-wmodal {
+    from{
+        opacity: 0;
+        transform: translate3d(0, -20px, 0);
+    }
+
+    to{
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.wmodal-container.mostrar{
+    display: flex;
+}
+
+.mostrar .wmodal{
+    animation: animate-wmodal .3s;
+}
+#form_update_bio{
+  width: 100%;
+  max-width: 100%;
+}
+#form_update_bio textarea{
+  max-width: 100%;
+  min-width: 50%;
+  padding: 30px;
+  font-size: 18px;
+  border-radius: 20px;
+  border: none;
+}
+
 /*******  2.4 - Main - Posts  **********/
 .post {
   position: relative;

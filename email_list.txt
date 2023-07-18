@@ -9,3 +9,4 @@
 ('Mec', 'mec02@gmail.com'), 
 ('gabriel', 'gguedes10@gmail.com'), 
 ('gabriel', 'gguedes10@gmail.com'), 
+('Mec', 'mec@gmail.com'), 

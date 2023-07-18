@@ -16,15 +16,15 @@ class UserProfileForm(forms.ModelForm):
 
 # Atualização dos dados do perfil Feita pelo cliente
 class UserProfileUpdateForm(forms.ModelForm):
-    birthday = forms.DateField(input_formats=['%d/%m/%Y'])
     class Meta:
         model = UserProfile
         fields = '__all__'
-        widgets = {'birthday': DateInput()}
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['aniversario'].widget.attrs.update({'class': 'mask-date'})
+#Atualizar a Biografia
+class BioUpdateForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ('bio',)
 
 # Cadastro de um novo Usuário 
 class UserRegistrationForm(forms.ModelForm):
@@ -63,5 +63,11 @@ class UserRegistrationForm(forms.ModelForm):
         else:
             return password
 
-
+# Editar Usuário no Sistema
+class UserEditForm(forms.ModelForm):
+    first_name = forms.CharField(label='Nome')
+    email = forms.EmailField(label='Email')
+    class Meta:
+        model = User
+        fields = ('first_name', 'email')
 

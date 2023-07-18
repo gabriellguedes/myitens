@@ -1,0 +1,15 @@
+{% load static %}
+<div class="card w-100 border-2">	
+ 	 <div class="card-body">
+	 	<h5 class="card-title fw-bold">Apresentação</h5>
+	 	<div class="p-3">
+	   	    <p class="card-text">{{profile.bio}}</p>
+	   	    
+	   	   {% if request.user == user %}
+		    <button class="btn btn-dark w-100" onclick="editBio()"> 
+		    	Editar biografia
+			</button>
+			{% endif %}
+		</div>	
+	  </div>
+</div>

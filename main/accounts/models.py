@@ -12,7 +12,7 @@ class UserProfile(models.Model):
 	photoProfile = models.ImageField('', upload_to=upload_image_formater, blank=False, null=False)
 	photoCapa = models.ImageField('', upload_to=upload_image_formater, blank=False, null=False)
 	phone = models.CharField('Telefone', max_length=16, blank=False, null=False)
-	birthday = models.DateField('Aniversário', blank=False, null=False, auto_now_add=True)
+	birthday = models.DateField('Aniversario', blank=False, null=False)
 	bio = models.TextField('Bio', max_length=200, blank=False, null=False)
 	created = models.DateTimeField( 'criado_em', auto_now_add=True, auto_now=False)
 

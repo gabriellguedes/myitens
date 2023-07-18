@@ -91,87 +91,79 @@ def new_user(request):
 			}
 			return render(request, template_name, context=context)
 
-# Completar Perfil de Usuário
-def profileComplete(request, pk):
-	template_name = 'accounts/profileComplete.html'
-	pass
-
 """ Detail Cliente acesso pelo cliente """
 def user_detail(request, pk):
 	template_name = 'accounts/user_detail.html'
 	user = User.objects.get(id=pk)
 	profile = UserProfile.objects.get(user=user)
-	context = {
-		'user': user,
-		'profile': profile,
-	}
-	return render(request, template_name, context=context)
+	
+	# Atualizar a biografia 
+	if request.method == "GET":
+		updateBio = BioUpdateForm(instance=profile)
+
+		context = {
+			'user': user,
+			'profile': profile,
+			'form_bio': updateBio,
+		}
+		return render(request, template_name, context=context)
+	elif request.method=="POST":
+		updateBio = BioUpdateForm(request.POST, instance=profile)
+		if updateBio.is_valid():
+			new_bio = updateBio.save(commit=False)
+			new_bio.save()
+			return HttpResponseRedirect(reverse('accounts:user_detail', kwargs={'pk': pk}))
+		else:	
+			context = {
+			'user': user,
+			'profile': profile,
+			'form_bio': updateBio,
+			'msg': "Formulário não é válido",
+		}
+		return render(request, template_name, context=context)
 
 # Atualização Cliente Feita pelo Cliente
+
 def user_update(request, pk):
     template_name = 'accounts/user_update.html'
-    if request.user.is_authenticated:
-    	user = request.user
+    pass
+    """
+    user = User.objects.get(id=pk)
+	profile = UserProfile.objects.get(user=user)
 
-    obj = User.objects.get(id=pk)
-   
-    try:
-        cliente =  Profile.objects.get(user=obj)
-        if cliente != None:
-            a = 0
-        else:
-            a = 1
-    except ObjectDoesNotExist:
-        a = 1
+	if request.method == "GET":
+		user_form = UserEditForm(instance=user)
+		profile_form_factory = inlineformset_factory(User, UserProfile, form=UserProfileUpdateForm, extra=0, can_delete=False)
+		form_profile = profile_form_factory(instance=user)
 
-    try:
-        endereco = Endereco.objects.get(user=obj)
-        if  endereco != None:
-            b = 0 
-        else:
-            b = 1
-    except ObjectDoesNotExist:
-        b =1   
-
-
-    if request.method == 'GET':
-    	user_form = UserEditForm(instance=obj)
-    	form_cliente_factory = inlineformset_factory(User, Profile, form=ProfileUpdateForm, extra=a, can_delete=False)
-    	form_cliente = form_cliente_factory(instance=obj)
-    	form_endereco_factory = inlineformset_factory(User, Endereco, form=EnderecoForm, extra=b, can_delete=False)
-    	form_endereco = form_endereco_factory(instance=obj)
-
-    	context = {
+		context = {
     		'user_form': user_form,
-    		'profile_form': form_cliente,
-    		'endereco': form_endereco,
-    		'cliente': obj,
-    		
-    	}
-    	return render(request, template_name, context=context)
-    elif request.method == 'POST':
-    	user_form = UserEditForm(request.POST,instance=obj)
-    	form_cliente_factory = inlineformset_factory(User, Profile, form=ProfileUpdateForm, can_delete=False)
-    	form_cliente = form_cliente_factory(request.POST, request.FILES, instance=obj)
-    	form_endereco_factory = inlineformset_factory(User, Endereco, form=EnderecoForm, extra=a, can_delete=False)
-    	form_endereco = form_endereco_factory(request.POST ,instance=obj)
+    		'profile_form': form_profile,
+			'user': user,
+			'profile': profile,
+		}
+		return render(request, template_name, context=context)
+	elif request.method == 'POST':
+		user_form = UserEditForm(request.POST,instance=user)
+		profile_form_factory = inlineformset_factory(User, UserProfile, form=UserProfileUpdateForm, can_delete=False)
+		form_profile = profile_form_factory(request.POST, request.FILES, instance=user)
 
-    	if user_form.is_valid() and form_cliente.is_valid() and form_endereco.is_valid():
-    		edit_user = user_form.save(commit=False)
-    		form_cliente.instance = edit_user 
-    		edit_user.save()
-    		form_cliente.save()
-    		form_endereco.save()
-    		return HttpResponseRedirect(reverse('contas:cliente_detail', kwargs={'pk': pk}))
-    	else:
-    		context = {
+		if user_form.is_valid() and form_profile.is_valid():
+			edit_user = user_form.save(commit=False)
+			edit_user.save()
+			form_profile.instance = edit_user
+			form_profile.save()
+			return HttpResponseRedirect(reverse('core:home'))
+			#return HttpResponseRedirect(reverse('accounts:user_detail', kwargs={'pk': pk}))
+		else:
+			context = {
     			'user_form': user_form,
-    			'profile_form': form_cliente,
-    			'endereco': form_endereco,
-    			'cliente': obj,
-    			
-    		}
-    		return render(request,  template_name, context=context)
+    			'profile_form': form_profile,
+    			'profile': profile,
+    			'user': user,
+    			'msg': "Formulário não é válido"
+    			}
+			return render(request,  template_name, context=context)"""
 
 
 # Listar Todos os Clientes Cadastrados no Sistema

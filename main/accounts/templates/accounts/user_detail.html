@@ -5,78 +5,24 @@
 {% load static %}
 {% block content %}
 	{% if request.user.is_authenticated %}
-		<div class="container">
-			<div id="header_profile" class="w-100">
-				<div id="cover_photo">
-					<img src="{% static 'img/cover.png' %}" alt="Capa">
-					<div class="d-flex justify-content-end">
-						<button class="btn btn-dark me-3">
-							<i class="fa-solid fa-camera me-2"></i> 
-							<label>Editar foto da capa</label>
-						</button>
-					</div>
-				</div><!-- /Photo da Capa -->
-				<div id="box_profile_picture" class="border-bottom border-2 pb-3">	
-					<div id="profile_picture">
-						<div>
-							<img src="{% static 'img/user.png'%}" alt="Foto de perfil">
-						</div>	
-						<a href="#" class="btn btn-dark" alt="Editar foto">
-							<i class="fa-solid fa-camera"></i>
-						</a>
-					</div><!-- /PROFILE PICTURE -->
-					<div id="profile_picture_title" class="px-3 py-5">
-						<h1>{{user.first_name}}</h1>
-					</div>
-					<div id="profile_picture_edit" class="d-flex align-items-end justify-content-end">
-						<div>
-							<button class="btn btn-dark me-3">
-								<i class="fa-solid fa-pen me-2"></i>
-								<label>Editar Perfil</label>
-							</button>
-						</div>							
-					</div> 
-				</div><!-- /BOX PROFILE PICTURE -->
-				<nav class="navbar navbar-expand-lg bg-light py-2">
-				  <div class="container-fluid">
-				    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-				      <span class="navbar-toggler-icon"></span>
-				    </button>
-				    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-				      <ul class="navbar-nav">
-				        <li class="nav-item">
-				          <a class="nav-link active" aria-current="page" href="#">Publicações</a>
-				        </li>
-				        <li class="nav-item">
-				          <a class="nav-link" href="#">Sobre</a>
-				        </li>
-				        <li class="nav-item">
-				          <a class="nav-link" href="#">Amigos</a>
-				        </li>
-				        <li class="nav-item dropdown">
-				          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-				            Mais
-				          </a>
-				          <ul class="dropdown-menu">
-				            <li><a class="dropdown-item" href="#">Action</a></li>
-				            <li><a class="dropdown-item" href="#">Another action</a></li>
-				            <li><a class="dropdown-item" href="#">Something else here</a></li>
-				          </ul>
-				        </li>
-				      </ul>
-				    </div>
-				  </div>
-				</nav>
-			</div><!-- /HEADER PROFILE -->
-		</div><!-- /CONTAINER -->	
-			<h3>
-				vai funcionar
-			</h3>
-			<p>{{user.first_name}}</p>
-			<p>{{user.username}}</p>
-			<p>{{profile.birthdate}}</p>
-			<div style="min-height: 1000px;">
-			</div>
+		<div id="container_profile" class="container">
+			<section id="header_profile" class="w-100">
+				{% include 'accounts/profile/header_profile.html' %}
+			</section><!-- /HEADER PROFILE -->
+			<section id="main_profile">
+				<div id="info_user_profile">
+					{% include 'accounts/profile/info_user.html' %}
+				</div><!-- Info User -->
+				<div id="timeline_in_profile">
+					{% include 'accounts/profile/timeline_profile.html' %}
+				</div><!-- /Posts TimeLine -->
+			</section><!-- /Section Main Profile -->	
+		</div><!-- /CONTAINER -->
+		
+		{% include 'accounts/profile/edit_bio.html' %}
+		{% include 'accounts/profile/edit_photo_profile.html' %}
+		{% include 'accounts/profile/edit_photo_cover.html' %}	
+			
 	{% else %}	
 		{% include 'includes/permission_msg.html' %}
 	{% endif %}
