@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from .models import UserProfile
 from main.core.forms import DateInput
 
+# Criar um no perfil de usuário
 class UserProfileForm(forms.ModelForm):
 	class Meta:
 		model = UserProfile
@@ -24,6 +25,18 @@ class UserProfileEditForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['phone'].widget.attrs.update({'class':'mask-phone'})
+
+# Atualizar a capa 
+class CoverUpdateForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ('photoCapa',)
+
+# Atualizar do Perfil 
+class PhotoUpdateForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ('photoProfile',)
 
 #Atualizar a Biografia
 class BioUpdateForm(forms.ModelForm):

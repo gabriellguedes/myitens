@@ -2,9 +2,20 @@
 <div id="modal-container-capa" class="wmodal-container">
     <div class="wmodal">
         <button class="fechar" id="fechar">X</button>
-       	<h1>Alterar Capa</h1>
-       	<p>{{profile.bio}}</p>
-       	<button class="btn btn-outline-info me-3">Alterar</button>
-       	<button class="btn btn-outline-danger">Cancelar</button>
+       	{% if msg %}
+            <p>{{msg}}</p>
+        {% endif%}
+        <h1 class="border-bottom border-secondary text-info fw-bold mb-3 pb-2">Alterar Capa</h1>
+        <form id="form_update_bio" method="POST" action="{% url 'accounts:update_cover' pk=request.user.id %}"  enctype="multipart/form-data">
+                    {% csrf_token %} 
+                    
+                    {% for item in form_cover %}
+                        <p>{{item}}</p>
+                    {% endfor%}
+                        
+            <button class="btn btn-info text-white me-3" type="submit">Alterar</button>
+            <button id="btn-fechar" class="btn btn-outline-danger">Cancelar</button>
+                    
+        </form> 
     </div>
 </div>

@@ -97,6 +97,7 @@
       }
         #cover_photo div button{
          opacity: 0.9;
+         z-index: 995;
         }
         #cover_photo div button i{
          color: #FFF;
@@ -132,7 +133,7 @@
             position: relative;
             border-radius: 50%;
             z-index: 990;
-            opacity: 0.9;
+            opacity: 0.4;
             margin: -65px 0 0 0;
             width: 162px;
         }

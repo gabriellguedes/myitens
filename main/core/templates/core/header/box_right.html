@@ -22,7 +22,17 @@
       <li class="nav-item">
          <div class="dropdown">
             <span class="" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <img src="{% static 'img/user.png' %}" style="max-width:40px;" class="rounded-circle" alt="User Name">
+              {% if request.user.user.all %}
+                {% for item in request.user.user.all %}
+                  {% if item.photoProfile.url != None %}
+                    <img src="{{ item.photoProfile.url }}" style="max-width:40px;" class="rounded-circle" alt="User Name">
+                  {% else %}
+                    <img src="{% static 'img/user.png' %}" style="max-width:40px;" class="rounded-circle" alt="User Name">
+                  {% endif %}  
+                {% endfor %}    
+              {% else %}
+                <img src="{% static 'img/user.png' %}" style="max-width:40px;" class="rounded-circle" alt="User Name">
+              {% endif %}      
               {% if msg %}
               <span class="alert_photo_dropdown" alt="Complete seu perfil">
                 <i class="fa-solid fa-exclamation"></i>
@@ -75,7 +85,17 @@
       <li class="nav-item">
          <div class="dropdown">
             <span class="" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <img src="{% static 'img/user.png' %}" style="max-width:40px;" class="rounded-circle" alt="User Name">
+              {% if request.user.user.all %}
+                {% for item in request.user.user.all %}
+                  {% if item.photoProfile.url != None %}
+                    <img src="{{ item.photoProfile.url }}" style="max-width:40px;" class="rounded-circle" alt="User Name">
+                  {% else %}
+                    <img src="{% static 'img/user.png' %}" style="max-width:40px;" class="rounded-circle" alt="User Name">
+                  {% endif %}  
+                {% endfor %}    
+              {% else %}
+                <img src="{% static 'img/user.png' %}" style="max-width:40px;" class="rounded-circle" alt="User Name">
+              {% endif %}      
               {% if msg %}
                <span class="alert_photo_dropdown" alt="Complete seu perfil">
                 <i class="fa-solid fa-exclamation"></i>

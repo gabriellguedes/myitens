@@ -55,6 +55,8 @@ urlpatterns = [
     path('user_update/<int:pk>/', views.edit_profile, name='edit_profile'),
     path('user_delete/<int:pk>/', views.user_delete, name='user_delete'),
     path('user_bio/<int:pk>/', views.edit_bio, name='edit_bio'),
+    path('update_photo/<int:pk>/', views.update_photo, name='update_photo'),
+    path('update_cover/<int:pk>/', views.update_cover, name='update_cover'),
    
     
 ]

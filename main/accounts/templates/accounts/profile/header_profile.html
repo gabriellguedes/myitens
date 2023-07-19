@@ -1,6 +1,16 @@
 {% load static %}
 <div id="cover_photo">
-	<img src="{% static 'img/cover_default_black.png' %}" alt="Capa">
+	{% if request.user.user.all %}
+    	{% for item in request.user.user.all %}
+      		{% if item.photoCapa.url != None %}
+      			<img src="{{item.photoCapa.url}}" alt="Capa">
+			{% else %}
+				<img src="{% static 'img/cover_default_black.png' %}" alt="Capa">
+			{% endif %}
+		{% endfor %}
+	{% else %}
+		<img src="{% static 'img/cover_default_black.png' %}" alt="Capa">
+	{% endif %}				
 	{% if request.user == profile.user %}
 		<div class="d-flex justify-content-end">
 			<button class="btn btn-dark me-3" onclick="editCapa()">
@@ -12,11 +22,25 @@
 </div><!-- /Photo da Capa -->
 <div id="box_profile_picture" class="border-bottom border-2 pb-3">	
 	<div id="profile_picture">
-		<div>
-			<img src="{% static 'img/user.png'%}" alt="Foto de perfil">
-		</div>
+		{% if request.user.user.all %}
+        	{% for item in request.user.user.all %}
+          		{% if item.photoProfile.url != None %}
+					<div>
+						<img src="{{ item.photoProfile.url }}" alt="Foto de perfil">
+					</div>
+				{% else %}
+					<div>
+						<img src="{% static 'img/user.png'%}" alt="Foto de perfil">
+					</div>
+				{% endif %}	
+			{% endfor %}		
+		{% else %}
+			<div>
+				<img src="{% static 'img/user.png'%}" alt="Foto de perfil">
+			</div>
+		{% endif %}
 		{% if request.user == profile.user %}	
-			<button class="btn btn-dark" alt="Editar foto" onclick="editProfile()">
+			<button class="btn btn-dark" alt="Editar foto" onclick="editPhoto()">
 				<i class="fa-solid fa-camera"></i>
 			</button>
 		{% endif %}	
@@ -39,7 +63,7 @@
 	{% if request.user == profile.user %}
 		<div id="profile_picture_edit" class="d-flex align-items-end justify-content-end">
 			<div>
-				<button class="btn btn-dark me-3" onclick="location.href='{% url 'accounts:edit_profile' pk=request.user.id %}'">
+				<button class="btn btn-dark me-3" onclick="editProfile()">
 					<i class="fa-solid fa-pen me-2"></i>
 					<label>Editar Perfil</label>
 				</button>

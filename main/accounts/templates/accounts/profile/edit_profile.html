@@ -1,0 +1,28 @@
+{% load static %}
+<div id="modal-container-editprofile" class="wmodal-container">
+    <div class="wmodal">
+        <button class="fechar" id="fechar">X</button>
+	<section class="container py-4">
+		<h2 class="border-bottom pb-3 title-2 mb-4 text-dark">
+			<i class="fa-solid fa-user text-secondary mr-2"></i> Atualizar
+		</h2>
+		<div class="container">
+			<form id="form_update_user" method="POST" action="{% url 'accounts:edit_profile' pk=request.user.id %}"  enctype="multipart/form-data">
+				{% csrf_token %}			
+				{{profile_form.management_form}}
+					{% for item in profile_form %}
+						{{item}}
+					{% endfor %}
+					
+						
+							
+				<button class="btn btn-info text-white mr-3" type="submit">Atualizar</button>
+				<button type="button" class="btn btn-outline-danger">Cancelar</button>
+			</form>
+		</div>	
+	</section>
+</div>
+</div>	
+
+
+

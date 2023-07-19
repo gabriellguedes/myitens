@@ -132,6 +132,18 @@ function editBio(){
     })
 }
 
+function editProfile(){
+    const modal = document.getElementById('modal-container-editprofile')
+    modal.classList.add('mostrar')
+
+    modal.addEventListener('click', (e) =>{
+        if (e.target.id == 'modal-container' || e.target.id == "fechar" || e.target.id=="btn-fechar"){
+            modal.classList.remove('mostrar')
+            localStorage.fechaModal = 'modal-container'
+        }
+    })
+}
+
 function editCapa(){
     const modal = document.getElementById('modal-container-capa')
     modal.classList.add('mostrar')
@@ -144,7 +156,7 @@ function editCapa(){
     })
 }
 
-function editProfile(){
+function editPhoto(){
     const modal = document.getElementById('modal-container-profile')
     modal.classList.add('mostrar')
 

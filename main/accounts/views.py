@@ -100,10 +100,20 @@ def user_profile(request, pk):
 	# Atualizar a biografia 
 	if request.method == "GET":
 		updateBio = BioUpdateForm(instance=profile)
+		updatePhoto = PhotoUpdateForm(instance=profile)
+		updateCover = CoverUpdateForm(instance=profile)
+		user_form = UserEditForm(instance=user)
+		profile_form_factory = inlineformset_factory(User, UserProfile, form=UserProfileEditForm, extra=0, can_delete=False)
+		form_profile = profile_form_factory(instance=user)
+
 		context = {
 			'user': user,
 			'profile': profile,
 			'form_bio': updateBio,
+			'form_photo': updatePhoto,
+			'form_cover': updateCover,
+			'user_form': user_form,
+    	 	'profile_form': form_profile,
 		}
 		return render(request, template_name, context=context)
 	
@@ -135,24 +145,57 @@ def edit_bio(request, pk):
 		}
 		return render(request, template_name, context=context)
 
+# Atualizar Foto de Perfil
+def update_photo(request, pk):
+	template_name = 'accounts/profile/edit_photo_profile.html'
+	user = User.objects.get(id=pk)
+	profile = UserProfile.objects.get(user=user)
+	
+	# Atualizar a biografia 
+	if request.method=="POST":
+		updatePhoto = PhotoUpdateForm(request.POST, request.FILES, instance=profile)
+		if updatePhoto.is_valid():
+			new_photo = updatePhoto.save(commit=False)
+			new_photo.save()
+			return HttpResponseRedirect(reverse('accounts:user_profile', kwargs={'pk': pk}))
+		else:	
+			context = {
+			'user': user,
+			'profile': profile,
+			'form_photo': updatePhoto,
+			'msg': "Formulário não é válido",
+		}
+		return render(request, template_name, context=context)
+
+# Atualizar Foto de Capa
+def update_cover(request, pk):
+	template_name = 'accounts/profile/edit_photo_cover.html'
+	user = User.objects.get(id=pk)
+	profile = UserProfile.objects.get(user=user)
+	
+	# Atualizar a biografia 
+	if request.method=="POST":
+		updateCover = CoverUpdateForm(request.POST, request.FILES, instance=profile)
+		if updateCover.is_valid():
+			new_cover = updateCover.save(commit=False)
+			new_cover.save()
+			return HttpResponseRedirect(reverse('accounts:user_profile', kwargs={'pk': pk}))
+		else:	
+			context = {
+			'user': user,
+			'profile': profile,
+			'form_cover': updateCover,
+			'msg': "Formulário não é válido",
+		}
+		return render(request, template_name, context=context)
+
 # Atualização Cliente Feita pelo Cliente
 def edit_profile(request, pk):
-    template_name = 'accounts/user_update.html'
+    template_name = 'accounts/profile/edit_profile.html'
     user = User.objects.get(id=pk)
     profile = UserProfile.objects.get(user=user)
 
-    if request.method == "GET":
-    	user_form = UserEditForm(instance=user)
-    	profile_form_factory = inlineformset_factory(User, UserProfile, form=UserProfileEditForm, extra=0, can_delete=False)
-    	form_profile = profile_form_factory(instance=user)
-    	context = {
-    	 'user_form': user_form,
-    	 'profile_form': form_profile,
-    	 'user': user,
-    	 'profile': profile,
-    	}
-    	return render(request, template_name, context=context)
-    elif request.method == 'POST':
+    if request.method == 'POST':
     	user_form = UserEditForm(request.POST,instance=user)
     	profile_form_factory = inlineformset_factory(User, UserProfile, form=UserProfileEditForm, can_delete=False)
     	form_profile = profile_form_factory(request.POST, request.FILES, instance=user)
