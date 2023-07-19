@@ -92,27 +92,40 @@ def new_user(request):
 			return render(request, template_name, context=context)
 
 """ Detail Cliente acesso pelo cliente """
-def user_detail(request, pk):
+def user_profile(request, pk):
 	template_name = 'accounts/user_detail.html'
 	user = User.objects.get(id=pk)
 	profile = UserProfile.objects.get(user=user)
-	
+
 	# Atualizar a biografia 
 	if request.method == "GET":
 		updateBio = BioUpdateForm(instance=profile)
-
 		context = {
 			'user': user,
 			'profile': profile,
 			'form_bio': updateBio,
 		}
 		return render(request, template_name, context=context)
-	elif request.method=="POST":
+	
+	context = {
+		'user': user,
+		'profile': profile,
+	}
+	return render(request, template_name, context=context)
+
+# Editar a biografia
+def edit_bio(request, pk):
+	template_name = 'accounts/profile/edit_bio.html'
+	user = User.objects.get(id=pk)
+	profile = UserProfile.objects.get(user=user)
+	
+	# Atualizar a biografia 
+	if request.method=="POST":
 		updateBio = BioUpdateForm(request.POST, instance=profile)
 		if updateBio.is_valid():
 			new_bio = updateBio.save(commit=False)
 			new_bio.save()
-			return HttpResponseRedirect(reverse('accounts:user_detail', kwargs={'pk': pk}))
+			return HttpResponseRedirect(reverse('accounts:user_profile', kwargs={'pk': pk}))
 		else:	
 			context = {
 			'user': user,
@@ -123,7 +136,7 @@ def user_detail(request, pk):
 		return render(request, template_name, context=context)
 
 # Atualização Cliente Feita pelo Cliente
-def user_update(request, pk):
+def edit_profile(request, pk):
     template_name = 'accounts/user_update.html'
     user = User.objects.get(id=pk)
     profile = UserProfile.objects.get(user=user)

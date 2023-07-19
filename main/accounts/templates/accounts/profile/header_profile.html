@@ -39,7 +39,7 @@
 	{% if request.user == profile.user %}
 		<div id="profile_picture_edit" class="d-flex align-items-end justify-content-end">
 			<div>
-				<button class="btn btn-dark me-3" onclick="location.href='{% url 'accounts:user_update' pk=request.user.id %}'">
+				<button class="btn btn-dark me-3" onclick="location.href='{% url 'accounts:edit_profile' pk=request.user.id %}'">
 					<i class="fa-solid fa-pen me-2"></i>
 					<label>Editar Perfil</label>
 				</button>

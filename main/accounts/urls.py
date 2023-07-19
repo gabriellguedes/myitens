@@ -51,10 +51,10 @@ urlpatterns = [
 # Cliente 
     path('new_user/', views.new_user, name='new_user'),
     path('user_list/', views.user_list, name='user_list'),
-    path('user_detail/<int:pk>/', views.user_detail, name='user_detail'),
-    path('user_update/<int:pk>/', views.user_update, name='user_update'),
+    path('user_detail/<int:pk>/', views.user_profile, name='user_profile'),
+    path('user_update/<int:pk>/', views.edit_profile, name='edit_profile'),
     path('user_delete/<int:pk>/', views.user_delete, name='user_delete'),
-
+    path('user_bio/<int:pk>/', views.edit_bio, name='edit_bio'),
    
     
 ]
