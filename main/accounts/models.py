@@ -2,6 +2,7 @@ import uuid
 from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import User
+from main.core.models import TimeStampedModel
 
 def upload_image_formater(instance, filename):
 	return f'{str(uuid.uuid4())}-{filename}'
