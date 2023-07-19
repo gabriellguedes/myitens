@@ -15,10 +15,15 @@ class UserProfileForm(forms.ModelForm):
 		self.fields['phone'].widget.attrs.update({'class':'mask-phone'})
 
 # Atualização dos dados do perfil Feita pelo cliente
-class UserProfileUpdateForm(forms.ModelForm):
+class UserProfileEditForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = '__all__'
+        fields = ('birthday', 'phone',)
+        widgets = {'birthday': DateInput()}
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['phone'].widget.attrs.update({'class':'mask-phone'})
 
 #Atualizar a Biografia
 class BioUpdateForm(forms.ModelForm):

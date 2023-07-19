@@ -70,6 +70,30 @@ input{
 .box-header-user{
   margin-right: 10px;
 }
+.alert_photo_dropdown{
+    border-radius: 50%;
+    color: #FFF;
+    background-color: red;
+    position: absolute;
+    padding: 2px 7px;
+    font-size: 5pt;
+    font-weight: bold;
+    font-family: 'Font Awesome 6 Free';
+    left: 30px;
+}
+
+.alert_text_dropdown{
+    border-radius: 50%;
+    color: #FFF;
+    background-color: red;
+    position: absolute;
+    padding: 5px 10px;
+    font-size: 5pt;
+    font-weight: bold;
+    font-family: 'Font Awesome 6 Free';
+    margin-left: 130px;
+}
+
 /****************************************************
   2.0 - Main 
 ****************************************************/

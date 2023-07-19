@@ -123,48 +123,41 @@ def user_detail(request, pk):
 		return render(request, template_name, context=context)
 
 # Atualização Cliente Feita pelo Cliente
-
 def user_update(request, pk):
     template_name = 'accounts/user_update.html'
-    pass
-    """
     user = User.objects.get(id=pk)
-	profile = UserProfile.objects.get(user=user)
+    profile = UserProfile.objects.get(user=user)
 
-	if request.method == "GET":
-		user_form = UserEditForm(instance=user)
-		profile_form_factory = inlineformset_factory(User, UserProfile, form=UserProfileUpdateForm, extra=0, can_delete=False)
-		form_profile = profile_form_factory(instance=user)
-
-		context = {
-    		'user_form': user_form,
-    		'profile_form': form_profile,
-			'user': user,
-			'profile': profile,
-		}
-		return render(request, template_name, context=context)
-	elif request.method == 'POST':
-		user_form = UserEditForm(request.POST,instance=user)
-		profile_form_factory = inlineformset_factory(User, UserProfile, form=UserProfileUpdateForm, can_delete=False)
-		form_profile = profile_form_factory(request.POST, request.FILES, instance=user)
-
-		if user_form.is_valid() and form_profile.is_valid():
-			edit_user = user_form.save(commit=False)
-			edit_user.save()
-			form_profile.instance = edit_user
-			form_profile.save()
-			return HttpResponseRedirect(reverse('core:home'))
-			#return HttpResponseRedirect(reverse('accounts:user_detail', kwargs={'pk': pk}))
-		else:
-			context = {
-    			'user_form': user_form,
-    			'profile_form': form_profile,
-    			'profile': profile,
-    			'user': user,
-    			'msg': "Formulário não é válido"
-    			}
-			return render(request,  template_name, context=context)"""
-
+    if request.method == "GET":
+    	user_form = UserEditForm(instance=user)
+    	profile_form_factory = inlineformset_factory(User, UserProfile, form=UserProfileEditForm, extra=0, can_delete=False)
+    	form_profile = profile_form_factory(instance=user)
+    	context = {
+    	 'user_form': user_form,
+    	 'profile_form': form_profile,
+    	 'user': user,
+    	 'profile': profile,
+    	}
+    	return render(request, template_name, context=context)
+    elif request.method == 'POST':
+    	user_form = UserEditForm(request.POST,instance=user)
+    	profile_form_factory = inlineformset_factory(User, UserProfile, form=UserProfileEditForm, can_delete=False)
+    	form_profile = profile_form_factory(request.POST, request.FILES, instance=user)
+    	if user_form.is_valid() and form_profile.is_valid():
+    		edit_user = user_form.save(commit=False)
+    		edit_user.save()
+    		form_profile.instance = edit_user
+    		form_profile.save()
+    		return HttpResponseRedirect(reverse('core:home'))
+    		#return HttpResponseRedirect(reverse('accounts:user_detail', kwargs={'pk': pk}))
+    	else:
+    		context = {
+    		 'user_form': user_form,
+    		 'profile_form': form_profile,
+    		 'user': user,
+    		 'profile': profile,
+    		}
+    		return render(request,  template_name, context=context)
 
 # Listar Todos os Clientes Cadastrados no Sistema
 def user_list(request):
