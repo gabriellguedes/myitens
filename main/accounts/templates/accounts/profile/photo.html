@@ -1,0 +1,79 @@
+{% load static %}
+<div id="modal-container-photo" class="wmodal-container">
+    <div class="wmodal">
+        <button class="fechar" id="fechar">X</button>
+       	{% if msg %}
+            <p>{{msg}}</p>
+        {% endif%}
+        <div class="window-modal-title mb-3">
+            <h1 class="text-white text-center fw-bold pt-3">Escolher foto do perfil</h1>
+        </div>    
+        <div class="container px-3 pb-5">
+            <form id="form_update_photo" method="POST" action="{% url 'gallery:new_photo' pk=request.user.id %}"  enctype="multipart/form-data">
+                <input type="hidden" name="csrfmiddlewaretoken" value="vJRU6VEZo8zXb5gSRgQb0Anoel0FZYzGH0dpnrXHsir7CxdAnpgzcsdPXWyV4zLh">
+    
+                <input type="hidden" name="gallery-TOTAL_FORMS" value="1" id="id_gallery-TOTAL_FORMS"><input type="hidden" name="gallery-INITIAL_FORMS" value="0" id="id_gallery-INITIAL_FORMS"><input type="hidden" name="gallery-MIN_NUM_FORMS" value="0" id="id_gallery-MIN_NUM_FORMS"><input type="hidden" name="gallery-MAX_NUM_FORMS" value="1000" id="id_gallery-MAX_NUM_FORMS">
+                <div class="d-none">
+                    {% if request.user %}
+                    <label for="id_gallery-0-user">User:</label>
+                    <select name="gallery-0-user" id="id_gallery-0-user">
+                      <option value="{{request.user.id}}" selected="">{{request.user.username}}</option>
+                    </select>
+                    {% endif %}
+                </div>
+
+                <div class="mb-3">
+                    <label name="gallery-0-original" for="id_gallery-0-original" > 
+                       <i class="fa-solid fa-plus me-1"></i> Carregar foto
+                    </label>
+                    <input type="file" name="gallery-0-original" accept="image/*" id="id_gallery-0-original"> 
+                </div>
+                <div id="preview" name="preview" class="hidee">
+                    <div class="d-flex justify-content-center pb-5 mb-5">
+                        <label class="picture">
+                            <span class="picture__image"></span>
+                        </label>
+                    </div>
+                    <div class="d-flex justify-content-end">            
+                        <button class="btn btn-outline-primary btn-fechar px-4 me-4" type="reset" onclick="location.href='{% url 'accounts:user_profile' pk=request.user.id%}'">Cancelar</button>
+                        <button class="btn btn-primary px-4 me-2" type="submit">Salvar</button>
+                    </div>       
+                </div>            
+                <div class="wm-photo my-3">                   
+                    {% if request.user.photo.all %}
+                        <h2 class="mb-3">Fotos do perfil</h2>
+                        <ul class="nav">
+                            {% for file in request.user.photo.all %}
+                                {% if file.original.url != None and file.album.id == 1 %}
+                                    <li class="nav-item">
+                                        <a href="{{file.original.url}}">
+                                            <img src="{{file.original.url}}">
+                                        </a>
+                                    </li>    
+                                {% endif %}
+                            {% endfor %}
+                        </ul>    
+                    {% endif %}
+                    
+                </div>
+
+                <div class="wm-photo mb-3">
+                    {% if request.user.user.all %}
+                        <h2 class="mb-3">Fotos da capa</h2>
+                        <ul class="nav">
+                            {% for file in request.user.photo.all %}
+                                {% if file.original.url != None and file.album.id == 2 %}
+                                    <li class="nav-item">
+                                        <a href="{{file.original.url}}">
+                                            <img src="{{file.original.url}}">
+                                        </a>
+                                    </li>    
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>                 
+            </form>
+        </div>     
+    </div>
+</div>

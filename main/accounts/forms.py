@@ -26,6 +26,7 @@ class UserProfileEditForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.fields['phone'].widget.attrs.update({'class':'mask-phone'})
 
+
 # Atualizar a capa 
 class CoverUpdateForm(forms.ModelForm):
     class Meta:
@@ -89,3 +90,10 @@ class UserEditForm(forms.ModelForm):
         model = User
         fields = ('first_name', 'email')
 
+
+#teste
+class NewProfile(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ('user', 'phone', 'birthday', )
+        widgets = {'birthday': DateInput()}

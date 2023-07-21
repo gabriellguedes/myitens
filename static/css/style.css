@@ -239,6 +239,8 @@ main{
   #profile_picture{
     max-width: 180px;
     max-height: 180px;
+    min-width: 180px;
+    min-height: 180px;
     overflow: hidden;
     border: 3px solid deepskyblue;
     border-radius: 50%;
@@ -259,7 +261,6 @@ main{
     }
   #profile_picture_title{    
     min-height: 180px;
-    min-width: 600px;
     padding-left: 20px;
     padding-top: 50px;
   } #profile_picture_title ul li a{
@@ -274,7 +275,6 @@ main{
   #profile_picture_edit{
     display: inline-block;
     min-height: 180px;
-    min-width: 400px;
   }
     #profile_picture_edit div button{
       opacity: 0.9;
@@ -305,43 +305,103 @@ main{
     height: 100vh;
     position: fixed;
     top: 0;
-    left: 0;
-    background-color: #0000004b;
-    z-index: 999;
+    background-color: #000000f2;
+    z-index: 9999;
     align-items: center;
     justify-content: center;
     display: none;
 }
 
 .wmodal{
-    width: 60%;
+    width: 100%;
     min-width:400px;
+    max-width: 700px;
     min-height: 200px;
-    background-color: #ffffff62;
+    background-color: #212529;
     backdrop-filter: blur(10px);
-    padding: 50px;
     border-radius: 10px;
+}
+
+.window-modal-title{
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .fechar{
     position: absolute;
-    top: -10px;
-    right: -10px;
+    top: 15px;
+    right: 15px;
     width: 30px;
     height: 30px;
     border-radius: 50%;
     border: none;
-    background-color: #ff0000;
+    background-color: #00000062;
     color: #fff;
     font-weight: 700;
     font-size: 14pt;
     cursor: pointer;
 }
 
-.wmodal h1{
-    margin-bottom: 20px;
+.fechar:hover{
+  background-color: #ffffff62;
 }
 
+.wmodal h1{
+    margin-bottom: 20px;
+    font-size: 1.25rem;
+}
+.wmodal input[type="file"]{
+  display: none;
+}
+.wmodal label[name="gallery-0-original"]{
+  background-color: rgba(45, 136, 255, 0.3);
+  text-align: center;
+  cursor: pointer;
+  color: #2D88FF;
+  display: block;
+  padding: 8px 0;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: .9375rem;
+}
+.wmodal label[name="gallery-0-original"]:hover{
+  background-color: rgba(45, 136, 255, 0.1);
+}
+
+.wmodal label[name="photoCapa"]{
+  background-color: rgba(45, 136, 255, 0.3);
+  text-align: center;
+  cursor: pointer;
+  color: #2D88FF;
+  display: block;
+  padding: 8px 0;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: .9375rem;
+}
+.wmodal label[name="photoCapa"]:hover{
+  background-color: rgba(45, 136, 255, 0.1);
+}
+
+.wm-photo h2{
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #FFF;
+}
+.wm-photo ul{
+  border-radius: 15px;
+  overflow: hidden;
+}
+.wm-photo li{
+  margin-right: 8px;
+}
+.wm-photo li:hover{
+  opacity: 0.4;
+}
+.wm-photo img{
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+}
 @keyframes animate-wmodal {
     from{
         opacity: 0;
@@ -374,6 +434,42 @@ main{
   border: none;
 }
 
+/*******  2.4 - Main - Preview foto de perfil  **********/
+.picture {
+  width: 300px;
+  height: 300px;
+  aspect-ratio: 1/1;
+  background: #ddd;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  color: #aaa;
+  font-family: sans-serif;
+  transition: color 300ms ease-in-out, background 300ms ease-in-out;
+  outline: none;
+  overflow: hidden;
+}
+
+.picture img{
+  width: 100%;
+  object-fit: cover;
+}
+
+.picture__image{
+  max-width: 100%;
+}
+#preview{
+}
+div[name="preview"]  {
+  overflow:hidden;
+  max-height: 900px;
+  transition: max-height 1.3s ease-in-out, opacity .5s linear;
+}
+
+div[name="preview"].hidee {
+  max-height: 0;
+  pointer-events: none;
+}
 /*******  2.4 - Main - Posts  **********/
 .post {
   position: relative;

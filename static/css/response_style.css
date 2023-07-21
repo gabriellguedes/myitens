@@ -126,7 +126,6 @@
         }
         #profile_picture div img{
           width: 100%;
-          height: 162px;
           object-fit:cover;
         }
         #profile_picture button{
@@ -181,7 +180,9 @@
     /*******  2.3.4 - Informações do usuário **********/
       #timeline_in_profile{
         width: 100%;
-      }         
+      }
+    /*******  2.3.5 - Informações do usuário **********/
+     
     /*******************************************
      	3.0 - Footer
      *******************************************/

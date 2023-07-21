@@ -9,7 +9,8 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
 from .models import UserProfile
 from .forms import *
-from django.forms import inlineformset_factory
+from main.gallery.forms import PhotoForm
+
 
 """ 
 	Criando um novo usuário, perfil e adicionando-o a lista de emails.
@@ -45,26 +46,24 @@ def new_user(request):
 				new_user.save()
 				form_user.instance = new_user
 				form_user.save()
-
-				# Verificando se o usuário aceitou receber emails e add o email do usuário a lista de newsletter.
-				if request.POST.get('email_market', False):
-					nome = new_user.first_name
-					email = new_user.email
-					newsletter_add(nome, email)
-				else:
-					pass
-
 				#Verificando se o perfil do Usuário foi criado e vinculado ao usuário.	
 				try:
 					profile = UserProfile.objects.get(user=new_user)
 				except ObjectDoesNotExist:	
 					profile = UserProfile.objects.create(user=new_user)
-
+				# Adicionando usuário a lista de email	
+				if request.POST.get('email_market', False):
+					nome = new_user.first_name
+					email = new_user.email
+					newsletter_add(nome, email)
+				else:
+					pass	
+					
 				# Realizando o login apoś a criação do usuário e perfil	
 				user = authenticate(username=new_user.username, password=request.POST['password'])
 				if user is not None:
 					login(request, user)
-					return HttpResponseRedirect(reverse('accounts:user_detail', kwargs={'pk': new_user.id}))
+					return HttpResponseRedirect(reverse('accounts:user_profile', kwargs={'pk': new_user.id}))
 				else:
 					form = UserRegistrationForm()
 					context = {
@@ -105,6 +104,7 @@ def user_profile(request, pk):
 		user_form = UserEditForm(instance=user)
 		profile_form_factory = inlineformset_factory(User, UserProfile, form=UserProfileEditForm, extra=0, can_delete=False)
 		form_profile = profile_form_factory(instance=user)
+		photo = PhotoForm(instance=profile)
 
 		context = {
 			'user': user,
@@ -113,6 +113,7 @@ def user_profile(request, pk):
 			'form_photo': updatePhoto,
 			'form_cover': updateCover,
 			'user_form': user_form,
+			'photo': photo,
     	 	'profile_form': form_profile,
 		}
 		return render(request, template_name, context=context)
@@ -141,50 +142,6 @@ def edit_bio(request, pk):
 			'user': user,
 			'profile': profile,
 			'form_bio': updateBio,
-			'msg': "Formulário não é válido",
-		}
-		return render(request, template_name, context=context)
-
-# Atualizar Foto de Perfil
-def update_photo(request, pk):
-	template_name = 'accounts/profile/edit_photo_profile.html'
-	user = User.objects.get(id=pk)
-	profile = UserProfile.objects.get(user=user)
-	
-	# Atualizar a biografia 
-	if request.method=="POST":
-		updatePhoto = PhotoUpdateForm(request.POST, request.FILES, instance=profile)
-		if updatePhoto.is_valid():
-			new_photo = updatePhoto.save(commit=False)
-			new_photo.save()
-			return HttpResponseRedirect(reverse('accounts:user_profile', kwargs={'pk': pk}))
-		else:	
-			context = {
-			'user': user,
-			'profile': profile,
-			'form_photo': updatePhoto,
-			'msg': "Formulário não é válido",
-		}
-		return render(request, template_name, context=context)
-
-# Atualizar Foto de Capa
-def update_cover(request, pk):
-	template_name = 'accounts/profile/edit_photo_cover.html'
-	user = User.objects.get(id=pk)
-	profile = UserProfile.objects.get(user=user)
-	
-	# Atualizar a biografia 
-	if request.method=="POST":
-		updateCover = CoverUpdateForm(request.POST, request.FILES, instance=profile)
-		if updateCover.is_valid():
-			new_cover = updateCover.save(commit=False)
-			new_cover.save()
-			return HttpResponseRedirect(reverse('accounts:user_profile', kwargs={'pk': pk}))
-		else:	
-			context = {
-			'user': user,
-			'profile': profile,
-			'form_cover': updateCover,
 			'msg': "Formulário não é válido",
 		}
 		return render(request, template_name, context=context)
@@ -262,4 +219,14 @@ def user_delete(request, pk):
 	elif request.method == 'POST':
 		objeto.delete()
 		return HttpResponseRedirect(reverse('contas:cliente_list'))
+
+
+def upload_image_formater(request, instance, filename):
+	if request.user.is_authenticated:
+		id_user = request.user.id
+		return f'{id_user}/{str(uuid.uuid4())}-{filename}'
+	else:
+		return f'fail/{str(uuid.uuid4())}-{filename}'
+
+
 

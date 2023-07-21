@@ -11,13 +11,7 @@ def home(request):
     template_name='index.html'
 
     if request.user.is_authenticated:
-        context = {}
-        user = request.user
-        profile = UserProfile.objects.get(user=user)
-        if user.last_name or profile.birthdate or profile.phone == '':
-            context['msg'] = "Complete o seu perfil!"
-
-        return render(request, template_name, context=context)
+       return render(request, template_name)
     else:
         return HttpResponseRedirect(reverse('accounts:login'))
 

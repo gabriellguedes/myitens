@@ -9,7 +9,7 @@
             <h1 class="text-white text-center fw-bold pt-3">Escolher foto da capa</h1>
         </div>  
         <div class="container px-3 pb-5">
-            <form id="form_update_cover" method="POST" action="{% url 'accounts:update_cover' pk=request.user.id %}"  enctype="multipart/form-data">
+            <form id="form_update_cover" method="POST" action="."  enctype="multipart/form-data">
                 {% csrf_token %}
 
                 <input type="hidden" name="csrfmiddlewaretoken" value="YH20tXNkFlSUWlVY4flx7T9lY8PCMJYgsx021bSRgBL7Oyrq42ivZdH9Lu9pIHeK">

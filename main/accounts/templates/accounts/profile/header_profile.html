@@ -22,18 +22,18 @@
 </div><!-- /Photo da Capa -->
 <div id="box_profile_picture" class="border-bottom border-2 pb-3">	
 	<div id="profile_picture">
-		{% if request.user.user.all %}
-        	{% for item in request.user.user.all %}
-          		{% if item.photoProfile.url != None %}
+		{% if request.user.photo.last %}
+        	
+          		{% if request.user.photo.last.original.url != None %}
 					<div>
-						<img src="{{ item.photoProfile.url }}" alt="Foto de perfil">
+						<img src="{{ request.user.photo.last.original.url }}" alt="Foto de perfil">
 					</div>
 				{% else %}
 					<div>
 						<img src="{% static 'img/user.png'%}" alt="Foto de perfil">
 					</div>
 				{% endif %}	
-			{% endfor %}		
+				
 		{% else %}
 			<div>
 				<img src="{% static 'img/user.png'%}" alt="Foto de perfil">
@@ -45,7 +45,7 @@
 			</button>
 		{% endif %}	
 	</div><!-- /PROFILE PICTURE -->
-	<div id="profile_picture_title">
+	<div id="profile_picture_title" class="w-50">
 		<div>
 			<h1>{{user.first_name}} {{user.last_name}}</h1>		
 		</div>						
@@ -61,7 +61,7 @@
 		</ul>	
 	</div><!-- /Name User -->
 	{% if request.user == profile.user %}
-		<div id="profile_picture_edit" class="d-flex align-items-end justify-content-end">
+		<div id="profile_picture_edit" class="d-flex align-items-end justify-content-end w-50">
 			<div>
 				<button class="btn btn-dark me-3" onclick="editProfile()">
 					<i class="fa-solid fa-pen me-2"></i>

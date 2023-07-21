@@ -149,7 +149,7 @@ function editCapa(){
     modal.classList.add('mostrar')
 
     modal.addEventListener('click', (e) =>{
-        if (e.target.id == 'modal-container' || e.target.id == "fechar"){
+        if (e.target.id == 'modal-container' || e.target.id == "fechar" || e.target.id=="btn-fechar"){
             modal.classList.remove('mostrar')
             localStorage.fechaModal = 'modal-container'
         }
@@ -157,11 +157,11 @@ function editCapa(){
 }
 
 function editPhoto(){
-    const modal = document.getElementById('modal-container-profile')
+    const modal = document.getElementById('modal-container-photo')
     modal.classList.add('mostrar')
 
     modal.addEventListener('click', (e) =>{
-        if (e.target.id == 'modal-container' || e.target.id == "fechar"){
+        if (e.target.id == 'modal-container' || e.target.id == "fechar" || e.target.id=="btn-fechar"){
             modal.classList.remove('mostrar')
             localStorage.fechaModal = 'modal-container'
         }
