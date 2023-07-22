@@ -1,0 +1,14 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+    {% if msg %}
+        <div class="container px-3 pb-3">
+            <div class="mt-5">
+                <h1 class="fw-bold text-center alert alert-danger">{{msg}}</h1>
+            </div>
+        </div>     
+    {% endif %}
+{% endblock %}
+{% block js %}
+    {{form.media}}
+{% endblock js %}
