@@ -25,7 +25,9 @@
               {% if request.user.user.all %}
                 {% for item in request.user.user.all %}
                   {% if item.photoProfile.url != None %}
-                    <img src="{{ item.photoProfile.url }}" style="max-width:40px;" class="rounded-circle" alt="User Name">
+                    <div id="photo-dropdown">
+                      <img src="{{ item.photoProfile.url }}" alt="User Name">
+                    </div>  
                   {% else %}
                     <img src="{% static 'img/user.png' %}" style="max-width:40px;" class="rounded-circle" alt="User Name">
                   {% endif %}  
@@ -88,7 +90,9 @@
               {% if request.user.user.all %}
                 {% for item in request.user.user.all %}
                   {% if item.photoProfile.url != None %}
-                    <img src="{{ item.photoProfile.url }}" style="max-width:40px;" class="rounded-circle" alt="User Name">
+                    <div id="photo-dropdown">
+                      <img src="{{ item.photoProfile.url }}" alt="User Name">
+                    </div>  
                   {% else %}
                     <img src="{% static 'img/user.png' %}" style="max-width:40px;" class="rounded-circle" alt="User Name">
                   {% endif %}  

@@ -22,17 +22,18 @@
 </div><!-- /Photo da Capa -->
 <div id="box_profile_picture" class="border-bottom border-2 pb-3">	
 	<div id="profile_picture">
-		{% if request.user.photo.last %}
-        	
-          		{% if request.user.photo.last.original.url != None %}
+		{% if request.user.user.all %}
+                {% for item in request.user.user.all %}
+                  {% if item.photoProfile.url != None %}
 					<div>
-						<img src="{{ request.user.photo.last.original.url }}" alt="Foto de perfil">
+						<img src="{{ item.photoProfile.url }}" alt="Foto de perfil">
 					</div>
 				{% else %}
 					<div>
 						<img src="{% static 'img/user.png'%}" alt="Foto de perfil">
 					</div>
-				{% endif %}	
+				{% endif %}
+				{% endfor %}	
 				
 		{% else %}
 			<div>

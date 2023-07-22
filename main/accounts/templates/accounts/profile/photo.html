@@ -55,8 +55,10 @@
                             <ul class="nav">
                                 {% for file in request.user.photo.all %}
                                     {% if file.original.url != None and file.album.id == 1 %}
-                                        <li class="nav-item" for="id_gallery-0-original">
+                                        <li class="nav-item">
+                                            <a href="{% url 'gallery:change_photo' pk=file.id %}">
                                                 <img src="{{file.original.url}}">
+                                            </a>
                                         </li>    
                                     {% endif %}
                                 {% endfor %}
@@ -72,7 +74,7 @@
                                 {% for file in request.user.photo.all %}
                                     {% if file.original.url != None and file.album.id == 2 %}
                                         <li class="nav-item">
-                                            <a href="{{file.original.url}}">
+                                            <a href="{% url 'gallery:change_photo' pk=file.id %}">
                                                 <img src="{{file.original.url}}">
                                             </a>
                                         </li>    

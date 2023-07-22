@@ -70,6 +70,16 @@ input{
 .box-header-user{
   margin-right: 10px;
 }
+#photo-dropdown{
+  max-width: 40px;
+  max-height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+#photo-dropdown img{
+  width: 100%;
+  object-fit: cover;
+}
 .alert_photo_dropdown{
     border-radius: 50%;
     color: #FFF;
@@ -401,6 +411,7 @@ main{
 }
 .wm-photo ul{
   border-radius: 15px;
+  justify-content: space-between;
   overflow: hidden;
 }
 .wm-photo li{

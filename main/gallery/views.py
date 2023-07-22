@@ -56,6 +56,9 @@ def photo(request, pk):
 			new_photo[0].user = user
 			form_img.save()
 
+			photoId = new_photo[0].id
+			selectPhoto(request, photoId)
+
 			return HttpResponseRedirect(reverse('accounts:user_profile', kwargs={'pk':pk}))
 		else:	
 			context = {
@@ -98,17 +101,17 @@ def cover(request, pk):
 
 # Alterar a foto de perfil por uma que está no Album
 def selectPhoto(request, pk):
-	photo = Imagem.objects.filter(id=pk)
+	template_name = 'gallery/photoSelect.html'
+	photo = Imagem.objects.get(id=pk)
 	owner = photo.user
-	
+	profile = UserProfile.objects.get(user=owner)
+
 	if request.user == owner:
-		for fields in photo:
-			url = fields.url
-			pk = fields.id
-			if last.id != fields.id:
-				pass
-	
-	context = {
-		'photo.url':url,
-	}		
-	return render(request, context=context)
+		profile.photoProfile = photo.original
+		profile.save()
+		return HttpResponseRedirect(reverse( 'accounts:user_profile', kwargs={'pk':owner.id}))
+	else:	
+		context = {
+			'msg': 'Você não tem permissão para realizar essa operação.',
+		}
+		return render(request, template_name, context=context)
