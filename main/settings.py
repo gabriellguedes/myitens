@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #My Apps
     'fontawesomefree',
+    'croppie',
     'main.accounts',
     'main.core',
     'main.gallery',

@@ -17,6 +17,7 @@
         <link rel="stylesheet" href="{% static 'css/style.css' %}" />
         <link rel="stylesheet" href="{% static 'css/response_style.css' %}" />
         <link rel="stylesheet" href="{% static 'css/cdn.bootstrap.min.css' %}" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.css" integrity="sha512-zxBiDORGDEAYDdKLuYU9X/JaJo/DPzE42UubfBw9yg8Qvb2YRRIQ8v4KsGHOx2H1/+sdSXyXxLXv5r7tHc9ygg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
 
          <!-- Our project just needs Font Awesome Free's Solid and Brand files -->
@@ -36,9 +37,13 @@
         
         
         <script src="{% static 'js/style.js' %}"></script>
-        <script src="{% static 'js/previewPhotoProfile.js' %}"></script>
+       
         <script src="{% static 'js/cdn.jsdelivr.net_npm_bootstrap@5.2.3_dist_js_bootstrap.bundle.min.js' %}"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js" integrity="sha512-Gs+PsXsGkmr+15rqObPJbenQ2wB3qYvTHuJO6YJzPe/dTLvhy0fmae2BcnaozxDo5iaF8emzmCZWbQ1XXiX2Ig==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="{% static 'js/previewPhoto.js' %}"></script>
+        
         {% block js %}
-        {% endblock js%}        
+        {% endblock js %}        
     </body>
 </html>

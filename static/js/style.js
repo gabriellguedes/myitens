@@ -161,7 +161,13 @@ function editPhoto(){
     modal.classList.add('mostrar')
 
     modal.addEventListener('click', (e) =>{
-        if (e.target.id == 'modal-container' || e.target.id == "fechar" || e.target.id=="btn-fechar"){
+        if (e.target.id == "fechar" || e.target.id=="btn-fechar"){
+
+            var inputFile = document.getElementById('id_gallery-0-original');
+            var formulario = document.getElementById('form_update_photo');
+            inputFile.value='';
+            formulario.reset();
+
             modal.classList.remove('mostrar')
             localStorage.fechaModal = 'modal-container'
         }

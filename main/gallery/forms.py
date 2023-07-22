@@ -1,5 +1,6 @@
 from django import forms
 from .models import Album, Imagem
+from croppie.fields import CroppieField
 
 class AlbumForm(forms.ModelForm):
 	class Meta:

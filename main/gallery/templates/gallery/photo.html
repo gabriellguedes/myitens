@@ -1,0 +1,33 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+<div id="modal-container-photo" class="wmodal-container">
+    <div class="wmodal">
+        <button class="fechar" id="fechar">X</button>
+       	
+        <div class="window-modal-title mb-3">
+            <h1 class="text-white text-center fw-bold pt-3">Escolher foto do perfil</h1>
+        </div>    
+        <div class="container px-3 pb-3">
+            <form style="margin-top: 100px;" id="form_update_photo" method="POST" action="."  enctype="multipart/form-data">
+
+
+                {% csrf_token %}
+                {% for i in form_profile %}
+                    {{ i }}
+                {% endfor %}
+                {{photo.management_form}}
+                {% for f in photo %}
+                    {{f}}
+                {% endfor %}        
+                    <div class="row">
+                        <div id="cropper"></div>
+                    </div>
+            </form>
+        </div>     
+    </div>
+</div>
+{% endblock %}
+{% block js %}
+    {{form.media}}
+{% endblock js %}

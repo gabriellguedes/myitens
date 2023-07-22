@@ -258,6 +258,8 @@ main{
       z-index: 950;
       opacity: 0.9;
       margin: -65px 0 0 135px;
+      padding: 6px 10px;
+
     }
   #profile_picture_title{    
     min-height: 180px;
@@ -317,11 +319,21 @@ main{
     min-width:400px;
     max-width: 700px;
     min-height: 200px;
+    max-height: 800px;
+    overflow: auto;
     background-color: #212529;
     backdrop-filter: blur(10px);
     border-radius: 10px;
 }
-
+.wmodal::-webkit-scrollbar{
+  width: 8px;
+}
+.wmodal::-webkit-scrollbar-track{
+}
+.wmodal::-webkit-scrollbar-thumb{
+  background:rgba(255, 255, 255, 0.19);
+  border-radius: 20px;
+}
 .window-modal-title{
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
@@ -394,6 +406,9 @@ main{
 .wm-photo li{
   margin-right: 8px;
 }
+.wm-photo li:last-child{
+  margin-right: 0;
+}  
 .wm-photo li:hover{
   opacity: 0.4;
 }
@@ -470,6 +485,17 @@ div[name="preview"].hidee {
   max-height: 0;
   pointer-events: none;
 }
+.croppie-container .cr-resizer, .croppie-container .cr-viewport {
+  border: none !important;
+}
+#boxButtonsPreview{
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+#boxButtonsPreview button{
+  font-size: .9375rem;
+}
+
+
 /*******  2.4 - Main - Posts  **********/
 .post {
   position: relative;

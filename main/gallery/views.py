@@ -7,6 +7,7 @@ from main.accounts.models import UserProfile
 from .models import Imagem, Album
 from .forms import AlbumForm, PhotoForm
 from main.accounts.forms import UserRegistrationForm
+from django.http import JsonResponse
 
 # Create your views here.
 def createAlbum(request):
@@ -95,14 +96,11 @@ def cover(request, pk):
 			}
 			return render(request, template_name, context=context)
 
-		
-
-
 # Alterar a foto de perfil por uma que está no Album
 def selectPhoto(request, pk):
 	photo = Imagem.objects.filter(id=pk)
-	last = Imagem.objects.last()
 	owner = photo.user
+	
 	if request.user == owner:
 		for fields in photo:
 			url = fields.url
