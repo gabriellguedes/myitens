@@ -1,6 +1,6 @@
 <form id="form-login" class="mt-3" action="." method="POST">
-    {% if form.errors %}
-        <label class="alert alert-primary text-center w-100">
+    {% if form.errors or msg %}
+        <label class="alert alert-dark text-center w-100">
             <i class="fa-solid fa-triangle-exclamation"></i> Email e Senha não coincidem. 
         </label>
     {% endif %}

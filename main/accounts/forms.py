@@ -1,8 +1,15 @@
+
 from django import forms
 from django.contrib.auth import password_validation
 from django.contrib.auth.models import User
 from .models import UserProfile
 from main.core.forms import DateInput
+from django.contrib.auth import get_user_model
+
+#Login
+class LoginForm(forms.Form):
+    username = forms.CharField()
+    password = forms.CharField(widget=forms.PasswordInput)
 
 # Criar um no perfil de usuário
 class UserProfileForm(forms.ModelForm):
@@ -25,7 +32,6 @@ class UserProfileEditForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['phone'].widget.attrs.update({'class':'mask-phone'})
-
 
 # Atualizar a capa 
 class CoverUpdateForm(forms.ModelForm):
@@ -89,7 +95,6 @@ class UserEditForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('first_name', 'email')
-
 
 #teste
 class NewProfile(forms.ModelForm):

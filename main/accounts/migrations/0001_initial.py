@@ -19,8 +19,8 @@ class Migration(migrations.Migration):
             name='UserProfile',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('photoProfile', models.ImageField(blank=True, null=True, upload_to=main.accounts.models.upload_image_formater, verbose_name='')),
-                ('photoCapa', models.ImageField(blank=True, null=True, upload_to=main.accounts.models.upload_image_formater, verbose_name='')),
+                ('photoProfile', models.ImageField(blank=True, null=True, upload_to=main.accounts.models.UserProfile.upload_image_formater, verbose_name='')),
+                ('photoCapa', models.ImageField(blank=True, null=True, upload_to=main.accounts.models.UserProfile.upload_image_formater, verbose_name='')),
                 ('phone', models.CharField(blank=True, max_length=16, null=True, verbose_name='Telefone')),
                 ('birthday', models.DateField(blank=True, null=True, verbose_name='Aniversario')),
                 ('bio', models.TextField(blank=True, max_length=200, null=True, verbose_name='Bio')),

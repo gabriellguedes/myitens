@@ -47,8 +47,8 @@ def photo(request, pk):
 		return render(request, template_name, context=context)
 	elif request.method == 'POST':			
 		album_form = AlbumForm(request.POST)
-		img_form_factory = inlineformset_factory(Album, Imagem, form=PhotoForm)
-		form_img = img_form_factory(request.POST, request.FILES)
+		img_form_factory = inlineformset_factory(Album, Imagem, form=PhotoForm, can_delete=False)
+		form_img = img_form_factory(request.POST, request.FILES or None)
 		
 		if form_img.is_valid():
 			new_photo = form_img.save(commit=False)
@@ -59,7 +59,7 @@ def photo(request, pk):
 			photoId = new_photo[0].id
 			selectPhoto(request, photoId)
 
-			return HttpResponseRedirect(reverse('accounts:user_profile', kwargs={'pk':pk}))
+			return HttpResponseRedirect(reverse('core:user_profile', kwargs={'pk': user.username}))
 		else:	
 			context = {
 			'form_profile': album_form,
@@ -109,7 +109,7 @@ def selectPhoto(request, pk):
 	if request.user == owner:
 		profile.photoProfile = photo.original
 		profile.save()
-		return HttpResponseRedirect(reverse( 'accounts:user_profile', kwargs={'pk':owner.id}))
+		return HttpResponseRedirect(reverse( 'core:user_profile', kwargs={'pk': owner.username}))
 	else:	
 		context = {
 			'msg': 'Você não tem permissão para realizar essa operação.',

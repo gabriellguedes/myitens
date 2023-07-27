@@ -125,7 +125,7 @@ function editBio(){
     modal.classList.add('mostrar')
 
     modal.addEventListener('click', (e) =>{
-        if (e.target.id == 'modal-container' || e.target.id == "fechar" || e.target.id=="btn-fechar"){
+        if (e.target.id == "fechar" || e.target.id=="btn-fechar"){
             modal.classList.remove('mostrar')
             localStorage.fechaModal = 'modal-container'
         }

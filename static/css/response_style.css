@@ -134,7 +134,7 @@
             z-index: 990;
             opacity: 0.4;
             margin: -65px 0 0 0;
-            width: 162px;
+            width: 175px;
         }
       #profile_picture_title{
         display: block;
@@ -186,7 +186,14 @@
       width: 90%;
       max-height: 95%;
     }
-     
+    .wm-photo li{
+      width: 15vw;
+      height: 15vw;
+    }
+    .wm-photo img{
+      width: 100%;
+      height: 100%;
+    }
     /*******************************************
      	3.0 - Footer
      *******************************************/

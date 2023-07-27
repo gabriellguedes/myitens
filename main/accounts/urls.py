@@ -9,7 +9,7 @@ app_name = "accounts"
 urlpatterns = [
 # Cliente 
     # Login and Logout
-    path('login/', auth_views.LoginView.as_view(redirect_authenticated_user=True, template_name='registration/login.html'), name='login'),
+    path('login/', views.user_login, name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
 
     # Change Password
@@ -51,7 +51,6 @@ urlpatterns = [
 # Cliente 
     path('new_user/', views.new_user, name='new_user'),
     path('user_list/', views.user_list, name='user_list'),
-    path('user_detail/<int:pk>/', views.user_profile, name='user_profile'),
     path('user_update/<int:pk>/', views.edit_profile, name='edit_profile'),
     path('user_delete/<int:pk>/', views.user_delete, name='user_delete'),
     path('user_bio/<int:pk>/', views.edit_bio, name='edit_bio'),

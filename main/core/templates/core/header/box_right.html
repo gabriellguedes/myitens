@@ -44,7 +44,7 @@
             </span>
             <ul class="dropdown-menu dropdown-menu">
               <li>
-                <a class="dropdown-item" href="{% url 'accounts:user_profile' request.user.id %}">
+                <a class="dropdown-item" href="{% url 'core:user_profile' pk=request.user.username %}">
                   <i class="fa-solid fa-user text-dark me-2"></i> Perfil
                   {% if msg %}
                   <span class="alert_text_dropdown" alt="Complete seu perfil">
@@ -108,7 +108,7 @@
             </span>
             <ul class="dropdown-menu dropdown-menu">
               <li>
-                <a class="dropdown-item" href="{% url 'accounts:user_profile' user.id %}">
+                <a class="dropdown-item" href="{% url 'core:user_profile' pk=user.username %}">
                   <i class="fa-solid fa-user me-2 text-dark"></i> Perfil
                   {% if msg %}
                   <span class="alert_text_dropdown" alt="Complete seu perfil">

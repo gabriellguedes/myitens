@@ -1,2 +1,8 @@
 ('Mec'', 'meclife@gmail.com'), 
 ('gabriel', 'teste@gmail.com'), 
+('New User', 'newuser@gmail.com'), 
+('newuser', 'newuser@gmail.com'), 
+('newuser', 'newuser@gmail.com'), 
+('Gabriel', 'gguedes10@gmail.com'), 
+('Gabriel', 'gguedes10@gmail.com'), 
+('newuser', 'newuser@gmail.com'), 

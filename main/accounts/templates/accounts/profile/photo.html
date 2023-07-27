@@ -11,8 +11,6 @@
         <div class="container px-3 pb-3">
             <form id="form_update_photo" method="POST" action="{% url 'gallery:new_photo' pk=request.user.id %}"  enctype="multipart/form-data">
 
-                <!-- <input type="hidden" name="csrfmiddlewaretoken" value="vJRU6VEZo8zXb5gSRgQb0Anoel0FZYzGH0dpnrXHsir7CxdAnpgzcsdPXWyV4zLh"> -->
-
                 {% csrf_token %}
                 <input type="hidden" name="gallery-TOTAL_FORMS" value="1" id="id_gallery-TOTAL_FORMS"><input type="hidden" name="gallery-INITIAL_FORMS" value="0" id="id_gallery-INITIAL_FORMS"><input type="hidden" name="gallery-MIN_NUM_FORMS" value="0" id="id_gallery-MIN_NUM_FORMS"><input type="hidden" name="gallery-MAX_NUM_FORMS" value="1000" id="id_gallery-MAX_NUM_FORMS">
                 <div class="d-none">

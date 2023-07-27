@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, get_user_model
 from django.db import IntegrityError
 from django.core.exceptions import ObjectDoesNotExist
 from main.core.views import newsletter_add
@@ -11,11 +12,31 @@ from .models import UserProfile
 from .forms import *
 from main.gallery.forms import PhotoForm
 
+# Login no App
+def user_login(request):
+	template_name = "registration/login.html"
+	form = LoginForm(request.POST or None)
+	context = {
+		"form": form
+	}
+	if form.is_valid():
+		username = request.POST["username"]
+		password = form.cleaned_data.get("password")
+		user = authenticate(request, username=username, password=password)
+		print("...")
+		print("Visualizar o conteúdo da variavel user ... ")
+		print(user)
+		print("...")
+		if user is not None:
+			login(request, user)
+			return HttpResponseRedirect(reverse( 'core:home'))
+		else:
+			context = {'msg': 'Algo deu errado!'}
+			return render(request, template_name, context=context)
+	return render(request, template_name, context)
 
-""" 
-	Criando um novo usuário, perfil e adicionando-o a lista de emails.
-	(Cadastro realizado pelo próprio cliente)
-"""
+#	Criando um novo usuário, perfil e adicionando-o a lista de emails.
+#	(Cadastro realizado pelo próprio cliente)
 def new_user(request):
 	template_name='accounts/register.html'
 	context={}
@@ -42,7 +63,7 @@ def new_user(request):
 			try:
 				new_user = form.save(commit=False)
 				new_user.set_password(form.cleaned_data['password'])
-				new_user.username = new_user.email				
+				new_user.username =  new_user.first_name
 				new_user.save()
 				form_user.instance = new_user
 				form_user.save()
@@ -63,7 +84,7 @@ def new_user(request):
 				user = authenticate(username=new_user.username, password=request.POST['password'])
 				if user is not None:
 					login(request, user)
-					return HttpResponseRedirect(reverse('accounts:user_profile', kwargs={'pk': new_user.id}))
+					return HttpResponseRedirect(reverse('core:user_profile', kwargs={'pk': new_user.username}))
 				else:
 					form = UserRegistrationForm()
 					context = {
@@ -89,11 +110,10 @@ def new_user(request):
 				'class': 'alert alert-warning',
 			}
 			return render(request, template_name, context=context)
-
-""" Detail Cliente acesso pelo cliente """
+# Detail Cliente acesso pelo cliente
 def user_profile(request, pk):
 	template_name = 'accounts/user_detail.html'
-	user = User.objects.get(id=pk)
+	user = User.objects.get(username=pk)
 	profile = UserProfile.objects.get(user=user)
 
 	# Atualizar a biografia 
@@ -123,7 +143,6 @@ def user_profile(request, pk):
 		'profile': profile,
 	}
 	return render(request, template_name, context=context)
-
 # Editar a biografia
 def edit_bio(request, pk):
 	template_name = 'accounts/profile/edit_bio.html'
@@ -136,7 +155,7 @@ def edit_bio(request, pk):
 		if updateBio.is_valid():
 			new_bio = updateBio.save(commit=False)
 			new_bio.save()
-			return HttpResponseRedirect(reverse('accounts:user_profile', kwargs={'pk': pk}))
+			return HttpResponseRedirect(reverse('core:user_profile', kwargs={'pk': user.username}))
 		else:	
 			context = {
 			'user': user,
@@ -145,7 +164,6 @@ def edit_bio(request, pk):
 			'msg': "Formulário não é válido",
 		}
 		return render(request, template_name, context=context)
-
 # Atualização Cliente Feita pelo Cliente
 def edit_profile(request, pk):
     template_name = 'accounts/profile/edit_profile.html'
@@ -171,7 +189,6 @@ def edit_profile(request, pk):
     		 'profile': profile,
     		}
     		return render(request,  template_name, context=context)
-
 # Listar Todos os Clientes Cadastrados no Sistema
 def user_list(request):
 	template_name = 'accounts/user_list.html'
@@ -220,13 +237,6 @@ def user_delete(request, pk):
 		objeto.delete()
 		return HttpResponseRedirect(reverse('contas:cliente_list'))
 
-
-def upload_image_formater(request, instance, filename):
-	if request.user.is_authenticated:
-		id_user = request.user.id
-		return f'{id_user}/{str(uuid.uuid4())}-{filename}'
-	else:
-		return f'fail/{str(uuid.uuid4())}-{filename}'
 
 
 

@@ -5,17 +5,20 @@
         {% if msg %}
             <p>{{msg}}</p>
         {% endif%}
-       	<h1 class="border-bottom border-secondary text-info fw-bold mb-3 pb-2">Editar biografia</h1>
-       	<form id="form_update_bio" method="POST" action="{% url 'accounts:edit_bio' pk=request.user.id %}"  enctype="multipart/form-data">
-                    {% csrf_token %} 
-                    
-                    {% for item in form_bio %}
-                        <p>{{item}}</p>
-                    {% endfor%}
-                        
-           	<button class="btn btn-info text-white me-3" type="submit">Alterar</button>
-           	<button id="btn-fechar" class="btn btn-outline-danger">Cancelar</button>
-                    
-        </form> 
+        <div class="window-modal-title mb-3">
+            <h1 class="text-white text-center fw-bold pt-3">Editar biografia</h1>
+        </div>
+        <div class="container px-3 pb-3">
+            <form id="form_update_bio" method="POST" action="{% url 'accounts:edit_bio' pk=request.user.id %}"  enctype="multipart/form-data">
+                 {% csrf_token %}
+
+                {% for item in form_bio %}
+                    <div>{{item}}</div>
+                {% endfor%}
+                <div>
+                    <button class="btn btn-outline-secondary text-white me-3" type="submit">Salvar</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
