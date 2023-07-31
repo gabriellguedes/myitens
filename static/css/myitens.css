@@ -1,0 +1,47 @@
+/* font-family */
+.font-light{
+  font-family: 'lemon-light';
+}
+.font-light-italic{
+  font-family: 'lemon-light-italic';
+}
+.font-bold{
+  font-family: 'lemon-bold';
+}
+.font-bold-italic{
+  font-family: 'lemon-bold-italic';
+}
+.font-medium{
+  font-family: 'lemon-medium';
+}
+.font-medium-italic{
+  font-family: 'lemon-medium-italic';
+}
+.font-regular{
+  font-family: 'lemon-regular';
+}
+.font-regular-italic{
+  font-family: 'lemon-regular-italic';
+}
+/* cores para o background  */
+.bgmy-primary{
+  background: #33BABE !important;
+}
+.bgmy-secondary{
+  background: #434343 !important;
+}
+.bgmy-info{
+  background: #03A8A2 !important;
+  opacity: 30%;
+}
+/* Cores dos textos */
+.tmy-primary{
+  color: #33BABE !important;
+}
+.tmy-secondary{
+  color: #434343 !important;
+}
+.tmy-info{
+  color: #03A8A2 !important;
+  opacity: 30%;
+}

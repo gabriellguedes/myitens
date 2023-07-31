@@ -15,25 +15,31 @@ from main.gallery.forms import PhotoForm
 # Login no App
 def user_login(request):
 	template_name = "registration/login.html"
-	form = LoginForm(request.POST or None)
-	context = {
-		"form": form
-	}
-	if form.is_valid():
-		username = request.POST["username"]
-		password = form.cleaned_data.get("password")
-		user = authenticate(request, username=username, password=password)
-		print("...")
-		print("Visualizar o conteúdo da variavel user ... ")
-		print(user)
-		print("...")
-		if user is not None:
-			login(request, user)
-			return HttpResponseRedirect(reverse( 'core:home'))
-		else:
-			context = {'msg': 'Algo deu errado!'}
-			return render(request, template_name, context=context)
-	return render(request, template_name, context)
+	if request.method == 'GET':
+		form = LoginForm()
+		context = {
+			'form': form
+		}
+		return render(request, template_name, context=context)
+	elif request.method == 'POST':
+		form = LoginForm(request.POST or None)
+		context = {
+			"form": form
+		}
+		if form.is_valid():
+			username = request.POST["username"]
+			password = form.cleaned_data.get("password")
+			user = authenticate(request, username=username, password=password)
+			print("...")
+			print("Visualizar o conteúdo da variavel user ... ")
+			print(user)
+			print("...")
+			if user is not None:
+				login(request, user)
+				return HttpResponseRedirect(reverse( 'core:home'))
+			else:
+				context = {'msg': 'Algo deu errado!'}
+				return render(request, template_name, context=context)
 
 #	Criando um novo usuário, perfil e adicionando-o a lista de emails.
 #	(Cadastro realizado pelo próprio cliente)

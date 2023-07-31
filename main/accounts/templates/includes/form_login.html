@@ -1,13 +1,13 @@
-<form id="form-login" class="mt-3" action="." method="POST">
+<form id="form-login" class="bg-white" action="." method="POST">
     {% if form.errors or msg %}
-        <label class="alert alert-dark text-center w-100">
-            <i class="fa-solid fa-triangle-exclamation"></i> Email e Senha não coincidem. 
+        <label name="alert" class="alert alert-dark text-center">
+            <i class="fa-solid fa-triangle-exclamation me-2"></i> Email e Senha não coincidem.
         </label>
     {% endif %}
     <div class="input-group border-bottom mb-3">
         <div class="input-group-prepend">
             <span class="input-group-text border-0 bg-white">
-                <i class="fa-solid fa-envelope text-info"></i>
+                <i class="fa-solid fa-envelope tmy-secondary"></i>
             </span>
         </div>
         <input class="form-control border-0" type="text" name="username" maxlength="30" id="id_username" placeholder="Email">
@@ -16,21 +16,30 @@
     <div class="input-group border-bottom mb-3">
         <div class="input-group-prepend">
             <span class="input-group-text border-0 bg-white">
-                <i class="fa-solid fa-lock text-info"></i>
+                <i class="fa-solid fa-lock tmy-secondary"></i>
             </span>
         </div>
         <input class="form-control border-0" type="password" name="password" id="id_password" placeholder="Senha"/>
         <span class="input-group-append">
-            <button id="showpassword" class="btn btn-sm btn-outline-info border-0" type="button"  style="background:transparent;">
-                <i id="icon_show_password" class="fa-solid fa-eye text-info" title="Mostrar Senha"></i>
+            <button id="showpassword" class="btn btn-sm btn-outlmy-secondary border-0" type="button"  style="background:transparent;">
+                <i id="icon_show_password" class="fa-solid fa-eye tmy-secondary" title="Mostrar Senha"></i>
             </button>
         </span>
-    </div>     
+    </div>
+    <div name="forget_pwd" class="">
+        {% if form.errors or msg %}
+            <small>
+                <a class="text-info" href="{% url 'accounts:senha_reset' %}">Esqueceu sua senha?</a>
+            </small>
+        {% endif %}
+    </div>
         {% csrf_token %}
         {% if form.errors %}
         
         {% endif %}
-        <input type="hidden" name="next" value="{{ next }}"/>
-        <button class="btn btn-info mt-3 text-white" type="submit">Entrar</button>
+        <div class="d-flex justify-content-center">
+            <input type="hidden" name="next" value="{{ next }}"/>
+            <button class="btn bgmy-secondary rounded-5 my-3 px-5 text-white fw-bolder" type="submit">Entrar</button>
+        </div>
 </form>
 

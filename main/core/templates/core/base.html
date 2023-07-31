@@ -13,7 +13,9 @@
         </title>
         <!-- CSS Styles -->
         <link rel="shortcut icon" href="{% static 'img/favicon.ico' %} ">
+        <link rel="stylesheet" href="{% static 'css/fonts.css' %}" />
         <link rel="stylesheet" href="{% static 'css/reset.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/myitens.css' %}" />
         <link rel="stylesheet" href="{% static 'css/style.css' %}" />
         <link rel="stylesheet" href="{% static 'css/response_style.css' %}" />
         <link rel="stylesheet" href="{% static 'css/cdn.bootstrap.min.css' %}" />
@@ -30,11 +32,8 @@
     </head>
     <body>
         {% include 'core/header.html' %}
-        <main>
-            {% block content %}
-            {% endblock content %}
-        </main>
-        
+        {% block content %}
+        {% endblock content %}
         
         <script src="{% static 'js/style.js' %}"></script>
        

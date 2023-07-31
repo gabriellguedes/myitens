@@ -1,3 +1,4 @@
+import time
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
@@ -7,13 +8,17 @@ from main.accounts.models import UserProfile
 
 
 # Create your views here.
+def load(request):
+    template_name = 'core/load.html'
+    return render(request, template_name)
+
 def home(request):
     template_name='index.html'
-
     if request.user.is_authenticated:
-       return render(request, template_name)
+        return render(request, template_name)
     else:
         return HttpResponseRedirect(reverse('accounts:login'))
+
 
 def newsletter_add(nome, email):
     arquivo = open('email_list.txt', 'a')
