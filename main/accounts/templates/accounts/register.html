@@ -1,38 +1,31 @@
 {% extends 'core/base.html' %}
 {% load static %}
 {% block content %}
-
-<main>
-    <div id="login-logo-box">
+<main class="container-main">
+    <div class="logo-box">
         <a class="d-flex justify-content-center" href="{% url 'core:home' %}">
             <img src="{% static 'img/logo.png' %}">
         </a>
     </div>
-    <div id="login-content-header"></div>
-    <div id="box_cadastro">
-        <section class="border rounded p-3"  >
-            <h3 class="text-center text-secondary font-weight-bold border-bottom pb-3">Crie sua conta</h3>
-            <p class="text-secondary text-center pt-2">Bem vindo (a) a <span class="text-info">My Itens</span>. Vamos criar sua conta gratuita!</p>
+
+    <div class="header-triangulo"></div>
+    <div class="login-content">
+        <section class="px-3"  >
+            <h3 class="text-center text-secondary fw-bold pb-3">Crie sua conta</h3>
             <div class="mx-3 my-3">
                 {% include 'includes/form_cadastro.html' %}
-            </div> 
-            <p class="text-center px-2">
-                <small>Para saber como tratamos os seus dados pessoais, acesse o nosso <a class="text-info text-center" href="#">Aviso de Privacidade</a>.</small>
-            </p> 
-            <p class="text-center">
-                <small class="d-block px-2">Já possui uma conta? Clique<a class="text-info" href="{% url 'accounts:login' %}"> aqui </a>para entrar.</small>
-            </p>     
-           
-
+            </div>
+            <small class="text-center text-m2 px-2 d-block">Para saber como tratamos os seus dados pessoais, acesse o nosso <a class="text-m4 text-center" href="#">Aviso de Privacidade</a>.</small>
         </section>
     </div>
     <div class="box-footer">
-        <div id="login-content-footer"></div>
+        <div class="footer-triangulo"></div>
 
         <label name="myitens" class="text-white">
             <span>MY</span> ITENS
         </label>
     </div>
 </main>
+
 
 {% endblock %}

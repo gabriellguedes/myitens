@@ -1,10 +1,10 @@
 @media only screen and (max-width:360px){
   /**** 2.1 MAIN - LOGIN ********/
    .header-triangulo{
-      border-top: 18vh solid transparent;
+      border-top: 14vh solid transparent;
     }
     .footer-triangulo{
-      border-bottom: 20vh solid transparent;
+      border-bottom: 14vh solid transparent;
     }
 }
 @media only screen and (max-width: 390px) and (min-width: 365px){
@@ -154,10 +154,10 @@
       opacity: 80%;
     }
     .header-triangulo{
-      border-top: 16vh solid transparent;
+      border-top: 10vh solid transparent;
     }
     .footer-triangulo{
-      border-bottom: 18vh solid transparent;
+      border-bottom: 12vh solid transparent;
     }
     #box_login{}
     /*******  2.2 - Main - Cadastro  **********/
@@ -445,10 +445,10 @@
       opacity: 80%;
     }
     .header-triangulo{
-      border-top: 18vh solid transparent;
+      border-top: 16vh solid transparent;
     }
     .footer-triangulo{
-      border-bottom: 20vh solid transparent;
+      border-bottom: 16vh solid transparent;
     }
     #box_login{}
     #login-text-footer{
@@ -723,10 +723,10 @@
     opacity: 80%;
   }
    .header-triangulo{
-      border-top: 20vh solid transparent;
+      border-top: 18vh solid transparent;
     }
     .footer-triangulo{
-      border-bottom: 22vh solid transparent;
+      border-bottom: 18vh solid transparent;
     }
   #box_login{}
   #login-text-footer{
