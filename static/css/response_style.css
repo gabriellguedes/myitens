@@ -1,13 +1,13 @@
 @media only screen and (max-width:360px){
   /**** 2.1 MAIN - LOGIN ********/
-   #login-content-header{
-      border-top: 16vh solid transparent !important;
+   .header-triangulo{
+      border-top: 18vh solid transparent;
     }
-    #login-content-footer{
-      border-bottom: 18vh solid transparent !important;
+    .footer-triangulo{
+      border-bottom: 20vh solid transparent;
     }
 }
-@media only screen and (max-width: 390px){
+@media only screen and (max-width: 390px) and (min-width: 365px){
     body{
       max-height: 100vh;
       overflow: hidden;
@@ -153,18 +153,13 @@
       margin-top: 5vh;
       opacity: 80%;
     }
-    #login-content-header{
-      border-top: 12vh solid transparent !important;
+    .header-triangulo{
+      border-top: 16vh solid transparent;
     }
-    #login-content-footer{
-      border-bottom: 18vh solid transparent !important;
+    .footer-triangulo{
+      border-bottom: 18vh solid transparent;
     }
     #box_login{}
-    #login-text-footer{
-      left: 75vw;
-      top: 95vh;
-    }
-
     /*******  2.2 - Main - Cadastro  **********/
     #box_cadastro{
       display: flex;
@@ -303,7 +298,7 @@
      *******************************************/
 }
 
-@media only screen and (max-width: 428px){
+@media only screen and (max-width: 428px) and (min-width: 395px){
     body{
       max-height: 100vh;
       overflow: hidden;
@@ -422,9 +417,7 @@
     	top:35px;
     }
     /*******  2.1 - Main - Login  **********/
-    #login-main{
-      max-height: px;
-    }
+    #login-main{}
     #login-main div[name="login-footer"]{
       background-image: linear-gradient(45deg, #5d8f8e 48%,  #838383 48%);
     }
@@ -451,10 +444,10 @@
       margin-top: 5vh;
       opacity: 80%;
     }
-    #login-content-header{
-      border-top: 16vh solid transparent;
+    .header-triangulo{
+      border-top: 18vh solid transparent;
     }
-    #login-content-footer{
+    .footer-triangulo{
       border-bottom: 20vh solid transparent;
     }
     #box_login{}
@@ -729,11 +722,11 @@
     margin-top: 5vh;
     opacity: 80%;
   }
-   #login-content-header{
-      border-top: 18vh solid transparent;
+   .header-triangulo{
+      border-top: 20vh solid transparent;
     }
-    #login-content-footer{
-      border-bottom: 20vh solid transparent;
+    .footer-triangulo{
+      border-bottom: 22vh solid transparent;
     }
   #box_login{}
   #login-text-footer{

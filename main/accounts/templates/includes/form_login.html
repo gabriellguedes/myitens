@@ -1,8 +1,10 @@
 <form id="form-login" class="bg-white" action="." method="POST">
     {% if form.errors or msg %}
-        <label name="alert" class="alert alert-dark text-center">
-            <i class="fa-solid fa-triangle-exclamation me-2"></i> Email e Senha não coincidem.
-        </label>
+        <p name="alert" class="alert text-center bg-opacity-m4 rounded-5 border-0">
+            <label class="text-m5">
+                <i class="fa-solid fa-triangle-exclamation me-2"></i> Email e Senha não coincidem!
+            </label>
+        </p>
     {% endif %}
     <div class="input-group border-bottom mb-3">
         <div class="input-group-prepend">
@@ -29,7 +31,7 @@
     <div name="forget_pwd" class="">
         {% if form.errors or msg %}
             <small>
-                <a class="text-info" href="{% url 'accounts:senha_reset' %}">Esqueceu sua senha?</a>
+                <a class="text-m1" href="{% url 'accounts:senha_reset' %}">Esqueceu sua senha?</a>
             </small>
         {% endif %}
     </div>
@@ -39,7 +41,7 @@
         {% endif %}
         <div class="d-flex justify-content-center">
             <input type="hidden" name="next" value="{{ next }}"/>
-            <button class="btn bgmy-secondary rounded-5 my-3 px-5 text-white fw-bolder" type="submit">Entrar</button>
+            <button class="btn bg-m2 rounded-5 my-3 px-5 text-white fw-bolder" type="submit">Entrar</button>
         </div>
 </form>
 

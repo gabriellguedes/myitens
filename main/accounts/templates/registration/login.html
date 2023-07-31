@@ -4,15 +4,15 @@
 
 {% block content %}
 
-<main id="login-main" class="">
-        <div id="login-logo-box">
+<main class="container-main">
+        <div class="logo-box">
         	<a class="d-flex justify-content-center" href="{% url 'core:home' %}">
             	<img src="{% static 'img/logo.png' %}">
             </a>
         </div>
 
-	    <div id="login-content-header"></div>
-	    <div id="login-content">
+	    <div class="header-triangulo"></div>
+	    <div class="login-content">
 			<section class="p-3 bg-white" id="box_login" >
 				<div class="mx-3">
 					{% include 'includes/form_login.html' %}
@@ -26,13 +26,13 @@
 				</div>
 				<div class="d-flex justify-content-center">
 					<small>
-						<a class="btn tmy-primary fw-bolder" href="{% url 'accounts:new_user' %}">Criar conta</a>
+						<a class="btn text-m1 fw-bolder" href="{% url 'accounts:new_user' %}">Criar conta</a>
 					</small>
 				</div>
 			</section>
 		</div>
-		<div name="login-footer">
-			<div id="login-content-footer"></div>
+		<div class="box-footer">
+			<div class="footer-triangulo"></div>
 
 			<label name="myitens" class="text-white">
                 <span>MY</span> ITENS

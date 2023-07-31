@@ -24,24 +24,38 @@
   font-family: 'lemon-regular-italic';
 }
 /* cores para o background  */
-.bgmy-primary{
+.bg-m1{
   background: #33BABE !important;
 }
-.bgmy-secondary{
+.bg-opacity-m1{
+  background: #33BABE !important;
+  opacity: 76% !important;
+}
+.bg-m2{
   background: #434343 !important;
 }
-.bgmy-info{
-  background: #03A8A2 !important;
-  opacity: 30%;
+.bg-m3{
+  background: #838383 !important;
+}
+.bg-m4{
+  background: rgb(3, 168, 162) !important;
+}
+.bg-opacity-m4{
+  background: rgb(3, 168, 162, 0.9) !important;
 }
 /* Cores dos textos */
-.tmy-primary{
+.text-m1{
   color: #33BABE !important;
 }
-.tmy-secondary{
+.text-m2{
   color: #434343 !important;
 }
-.tmy-info{
-  color: #03A8A2 !important;
-  opacity: 30%;
+.text-m3{
+  color: #838383 !important;
+}
+.text-m4{
+  color: rgb(3, 168, 162, 0.9) !important;
+}
+.text-m5{
+  color: #FFF !important;
 }

@@ -174,7 +174,7 @@ input{
   2.0 - Main 
 ****************************************************/
 /*******  2.1 - Main - Login  **********/
-main{
+.container-main{
   background-color: #FFF;
   display:block;
   max-width: 100%;
@@ -182,7 +182,7 @@ main{
   height: 100vh;
   overflow: hidden;
 }
-#login-logo-box{
+.logo-box{
   display: flex;
   justify-content: center;
   background: #434343;
@@ -190,12 +190,12 @@ main{
   z-index: 300;
 }
 
-main div[name="login-footer"]{
+.box-footer{
   background-image: linear-gradient(45deg, #5d8f8e 50%,  #838383 50%);
   position: relative;
   z-index: 100;
 }
-main div label[name="myitens"]{
+.box-footer label[name="myitens"]{
   font-family: 'lemon-light-italic';
   display: block;
   padding-right: 5vw;
@@ -208,22 +208,23 @@ main div label[name="myitens"]{
   top: -8vh;
   margin: 0;
 }
-main div label[name="myitens"] span{
+.box-footer label[name="myitens"] span{
   font-family: 'lemon-bold-italic' !important;
   font-weight: bolder;
 }
-#login-content{
+.login-content{
   z-index: 200;
   position: relative;
   margin: 0 auto;
   max-width: 480px;
+  min-height: 319px;
 }
-#login-logo-box>a>img{
+.logo-box>a>img{
   width: 20%;
   margin-top: 5vh;
   opacity: 80%;
 }
-#login-content-header{
+.header-triangulo{
   background: #434343;
   border-top: 22vh solid transparent;
   border-bottom: 0vh solid transparent;
@@ -231,7 +232,7 @@ main div label[name="myitens"] span{
   border-right: 100vw solid #FFF;
   height: 0;
 }
-#login-content-footer{
+.footer-triangulo{
   width: 0;
   height: 0;
   border-top: 0 solid transparent;
@@ -241,17 +242,15 @@ main div label[name="myitens"] span{
 #box_login{
   position: relative;
 }
-#login-text-footer{
-  left: 75vw;
-  top: 95vh;
-}
-
 #form-login{}
-#form-login label[name="alert"]{
+#form-login p[name="alert"]{
   position: absolute;
   top: -10vh;
   width: 80%;
   z-index: 9999;
+}
+#form-login p[name="alert"]:before{
+  opacity: 0.3;
 }
 #form-login div[name="forget_pwd"]{
   position: absolute;
@@ -260,7 +259,7 @@ main div label[name="myitens"] span{
 /*******  2.2 - Main - Cadastro  **********/
 #box_cadastro{
   display: flex;
-  justify-content: end;
+  justify-content: center;
 }
 #box_cadastro section{
   box-shadow: darkgray 2px 3px 7px 5px;

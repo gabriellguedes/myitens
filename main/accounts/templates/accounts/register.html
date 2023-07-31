@@ -2,11 +2,14 @@
 {% load static %}
 {% block content %}
 
-<div class="w-100 d-flex justify-content-center">
-    <div class="display-none">
-        <img class="" src="">
+<main>
+    <div id="login-logo-box">
+        <a class="d-flex justify-content-center" href="{% url 'core:home' %}">
+            <img src="{% static 'img/logo.png' %}">
+        </a>
     </div>
-    <div class="mt-5" id="box_cadastro">
+    <div id="login-content-header"></div>
+    <div id="box_cadastro">
         <section class="border rounded p-3"  >
             <h3 class="text-center text-secondary font-weight-bold border-bottom pb-3">Crie sua conta</h3>
             <p class="text-secondary text-center pt-2">Bem vindo (a) a <span class="text-info">My Itens</span>. Vamos criar sua conta gratuita!</p>
@@ -22,7 +25,14 @@
            
 
         </section>
-    </div>  
-</div>
+    </div>
+    <div class="box-footer">
+        <div id="login-content-footer"></div>
+
+        <label name="myitens" class="text-white">
+            <span>MY</span> ITENS
+        </label>
+    </div>
+</main>
 
 {% endblock %}
