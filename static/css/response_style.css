@@ -8,11 +8,7 @@
     }
 }
 @media only screen and (max-width: 390px) and (min-width: 365px){
-    body{
-      max-height: 100vh;
-      overflow: hidden;
-    }
-    .display-none{
+   .display-none{
       display: none !important;
     }
     .display-block{
@@ -445,10 +441,10 @@
       opacity: 80%;
     }
     .header-triangulo{
-      border-top: 16vh solid transparent;
+      border-top: 12vh solid transparent;
     }
     .footer-triangulo{
-      border-bottom: 16vh solid transparent;
+      border-bottom: 17vh solid transparent;
     }
     #box_login{}
     #login-text-footer{
@@ -597,9 +593,7 @@
      *******************************************/
 }
 
-@media only screen and (max-width: 820px) and (min-width: 500px){
-  body{
-  }
+@media only screen and (max-width: 820px) and (min-width: 500px) {
   /*******************************************
    0.0 - Load Page
   ********************************************/
@@ -717,32 +711,18 @@
   #login-content{}
   #login-logo-box{}
 
-  #login-logo-box>a>img{
-    width: 25%;
-    margin-top: 5vh;
-    opacity: 80%;
-  }
    .header-triangulo{
-      border-top: 18vh solid transparent;
+      border-top: 15vh solid transparent;
     }
     .footer-triangulo{
       border-bottom: 18vh solid transparent;
     }
   #box_login{}
-  #login-text-footer{
-    left: 75vw;
-    top: 95vh;
-  }
+  #
 
 
   /*******  2.2 - Main - Cadastro  **********/
-  #box_cadastro{
-    display: flex;
-    justify-content: center;
-  }
-  #box_cadastro section{
-      max-width: 380px;
-  }
+
   /*******  2.3 - Main - Profile User **********/
   #container_profile{
       max-width: 100% !important;
@@ -868,6 +848,51 @@
     width: 100%;
     height: 100%;
   }
+  /*******************************************
+    3.0 - Footer
+   *******************************************/
+}
+
+@media only screen and (max-width: 1280px) and (min-width: 825px){
+
+  /*******************************************
+   0.0 - Load Page
+  ********************************************/
+
+  /*******************************************
+    1.0 - Header
+   *******************************************/
+
+  /*******  1.1 - Header - Logo  **********/
+  .
+  /*******  1.2 - Header - Search *********/
+
+  /*******  1.3 - Header - Box User *******/
+
+  /*******************************************
+    2.0 - Main
+   *******************************************/
+  .logo-box>a>img {
+    width: 100px !important;
+  }
+  /*******  2.1 - Main - Login  **********/
+
+
+
+  /*******  2.2 - Main - Cadastro  **********/
+
+  /*******  2.3 - Main - Profile User **********/
+
+  /*******  2.3.1 - Photo de Capa **********/
+
+  /*******  2.3.2 - Photo do Usuário **********/
+
+  /*******  2.3.3 - Informações do usuário **********/
+
+  /*******  2.3.4 - Informações do usuário **********/
+
+  /*******  2.3.5 - Informações do usuário **********/
+
   /*******************************************
     3.0 - Footer
    *******************************************/

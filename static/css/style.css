@@ -217,7 +217,7 @@ input{
   position: relative;
   margin: 0 auto;
   max-width: 480px;
-  min-height: 370px;
+  min-height: 392px;
 }
 .logo-box>a>img{
   width: 20%;
@@ -252,10 +252,7 @@ input{
 #form-login p[name="alert"]:before{
   opacity: 0.3;
 }
-#form-login div[name="forget_pwd"]{
-  position: absolute;
-  top:110px;
-}
+
 /*******  2.2 - Main - Cadastro  **********/
 #box_cadastro{
   display: flex;
@@ -304,7 +301,7 @@ input{
 
 /* On mouse-over, add a grey background color */
 .container_checkbox:hover input ~ .checkmark {
-  background-color: #0dcaf0;
+  background-color: rgb(3, 168, 162, 0.3) ;
   opacity: 0.65;
 }
 
