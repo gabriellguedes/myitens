@@ -1,25 +1,36 @@
 {% load static %}
 {% if request.user.is_authenticated %}
 <header id="wrap-header" class="bg-m2">
-  <ul class="nav">
+  <ul class="row">
     <!-- LOGO -->
-    <li class="display-none w-25 nav-item">
+     <li class="col">
       <a href="{% url 'core:home' %}">
-        <label class="title-app font-regular-italic">
+        <label class="title-app font-light-italic">
             <span class="font-bold-italic">My</span> Itens
         </label>
       </a>
     </li>
-    <!-- LOGO RESPONSIVE -->
-     <li class="display-block w-auto nav-item">
-      <a href="{% url 'core:home' %}">
-        <label class="title-app">
-            My Itens
-        </label>
-      </a>
-    </li>
+
     <!-- Box Info -->
-    {% include 'core/header/box_right.html' %}
+    <li class="col align-self-center">
+      <div class="container">
+        <ul class="nav d-flex justify-content-end">
+          <li class="nav-item">
+            <!-- Notificações -->
+            <div class="dropdown">
+              <button class="btn btn-large rounded-circle notification-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-regular fa-bell"></i>
+              </button>
+              <ul class="dropdown-menu dropdown-menu">
+                <li class="dropdown-item">Notificações</a></li>
+                <li><hr class="dropdown-divider"></li>
+
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </li>
   </ul>
 </header>
 {% endif %}

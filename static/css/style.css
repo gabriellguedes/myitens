@@ -84,8 +84,14 @@ input{
   display: block;
   width: 100%;
   max-height: 75px;
-  /*background-color: #0dcaf0;*/
   border-bottom: 1px solid blueviolet;
+}
+#wrap-header ul {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+#wrap-header ul li:last-child{
 }
 /*********************************************
   1.1 - Header - Logo 
@@ -94,7 +100,8 @@ input{
   color: white;
   font-weight: bolder;
   margin: 10px 0 !important;
-  font-size: 18pt;
+  font-size: 1.2rem;
+  opacity: 0.9;
   display: block;
   padding-left: 15px ;
 }
@@ -137,9 +144,11 @@ input{
   height: 40px;
   min-width: 40px;
   min-height: 40px;
+  border: 2px solid;
   max-height: 40px;
   border-radius: 50%;
   overflow: hidden;
+  color: rgb(255, 255, 255, 0.9);
 }
 #photo-dropdown img{
   width: 100%;
@@ -334,7 +343,29 @@ input{
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
-/*******  2.3 - Main - Profile User  **********/
+/*******  2.3 - Main - Cadastro  **********/
+#container-feed{
+  max-width: 470px;
+  height: 100vh;
+}
+#main-feed{
+  max-height: 92vh;
+  overflow: auto;
+}
+#navigation-footer{
+  width: 100%;
+  height: 60px;
+  position: fixed;
+  bottom: 0vw;
+  display: grid;
+  align-content: center;
+}
+#navigation-footer ul{
+  width: 100%;
+  margin:0 auto;
+  font-size: 1.7rem;
+}
+/*******  2.4 - Main - Profile User  **********/
 #header_profile{
   max-width: 1250px;
 }
@@ -342,7 +373,7 @@ input{
   margin-left: 25px;
   margin-right: 25px;
 }
-/*******  2.3.1 - Photo de Capa **********/
+/*******  2.4.1 - Photo de Capa **********/
 #cover_photo{
   
   max-height: 462px;

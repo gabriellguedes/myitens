@@ -1,12 +1,13 @@
 {% extends 'core/base.html' %}
 {% load static %}
 {% block content %}
+<div id="container-feed">
 	{% include 'core/header.html' %}
-	<main>
+	<main id="main-feed">
 		<section class="col-3 col-md-3 display-none">
 			
 		</section>
-		<section class="col-6 col-md-6 align-self-center d-flex justify-content-center">	
+		<section class="d-flex justify-content-center">
 		    <div id="posts-container"></div>
 
 		    <div class="loader">
@@ -19,8 +20,39 @@
 	    	
 	    </section>
 	</main>
-	<footer>
-
-	</footer>
-    
+	<nav id="navigation-footer" class="bg-m2">
+		<!-- BOX Usuário -->
+		<ul class="row d-flex justify-content-center align-items-center">
+			<li class="col me-3">
+				<i class="fa-solid fa-house text-m5-opacity"></i>
+			</li>
+			<li class="col me-3">
+				<i class="fa-solid fa-location-pin text-m5-opacity"></i>
+			</li>
+			<li class="col me-3">
+				<i class="fa-solid fa-comment-dots text-m5-opacity"></i>
+			</li>
+	    	<li class="col me-3">
+	              {% if request.user.user.all %}
+	                {% for item in request.user.user.all %}
+	                  {% if item.photoProfile.url != None %}
+	                    <div id="photo-dropdown">
+	                      <img src="{{ item.photoProfile.url }}" alt="User Name">
+	                    </div>
+	                  {% else %}
+	                    <img src="{% static 'img/user.png' %}" style="max-width:40px;" class="rounded-circle" alt="User Name">
+	                  {% endif %}
+	                {% endfor %}
+	              {% else %}
+	                <img src="{% static 'img/user.png' %}" style="max-width:40px;" class="rounded-circle" alt="User Name">
+	              {% endif %}
+	              {% if msg %}
+	              <span class="alert_photo_dropdown" alt="Complete seu perfil">
+	                <i class="fa-solid fa-exclamation"></i>
+	              </span>
+	              {% endif %}
+	        </li>
+	    </ul>
+	</nav>
+</div>
 {% endblock %}

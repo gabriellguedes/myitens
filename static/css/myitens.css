@@ -27,7 +27,7 @@
 .bg-m1{
   background: #33BABE !important;
 }
-.bg-opacity-m1{
+.bg-m1-opacity{
   background: #33BABE !important;
   opacity: 76% !important;
 }
@@ -40,7 +40,7 @@
 .bg-m4{
   background: rgb(3, 168, 162) !important;
 }
-.bg-opacity-m4{
+.bg-m4-opacity{
   background: rgb(3, 168, 162, 0.9) !important;
 }
 /* Cores dos textos */
@@ -57,5 +57,8 @@
   color: rgb(3, 168, 162, 0.9) !important;
 }
 .text-m5{
-  color: #FFF !important;
+  color: rgb(255, 255, 255) !important;
+}
+.text-m5-opacity{
+  color: rgb(255, 255, 255, 0.9) !important;
 }
