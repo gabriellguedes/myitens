@@ -32,7 +32,10 @@
   opacity: 76% !important;
 }
 .bg-m2{
-  background: #434343 !important;
+  background: rgb(67,67,67) !important;
+}
+.bg-m2-opacity{
+  background: rgb(67,67,67, 0.9) !important;
 }
 .bg-m3{
   background: #838383 !important;
@@ -43,12 +46,21 @@
 .bg-m4-opacity{
   background: rgb(3, 168, 162, 0.9) !important;
 }
+.bg-black{
+  background: rgb(0, 0, 0);
+}
+.bg-black-opacity{
+  background: rgb(0, 0, 0, 0.9);
+}
 /* Cores dos textos */
 .text-m1{
   color: #33BABE !important;
 }
 .text-m2{
-  color: #434343 !important;
+  color: rgb(67,67,67) !important;
+}
+.text-m2-opacity{
+  color: rgb(67,67,67, 0.9) !important;
 }
 .text-m3{
   color: #838383 !important;

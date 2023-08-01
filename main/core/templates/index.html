@@ -3,7 +3,7 @@
 {% block content %}
 <div id="container-feed">
 	{% include 'core/header.html' %}
-	<main id="main-feed">
+	<main id="main-feed"  class="bg-black-opacity">
 		<section class="col-3 col-md-3 display-none">
 			
 		</section>
@@ -20,7 +20,7 @@
 	    	
 	    </section>
 	</main>
-	<nav id="navigation-footer" class="bg-m2">
+	<nav id="navigation-footer" class="bg-black">
 		<!-- BOX Usuário -->
 		<ul class="row d-flex justify-content-center align-items-center">
 			<li class="col me-3">
@@ -36,15 +36,21 @@
 	              {% if request.user.user.all %}
 	                {% for item in request.user.user.all %}
 	                  {% if item.photoProfile.url != None %}
+	                  <a href="{% url 'core:user_profile' pk=request.user.username %}">
 	                    <div id="photo-dropdown">
 	                      <img src="{{ item.photoProfile.url }}" alt="User Name">
 	                    </div>
+	                  </a>
 	                  {% else %}
+	                  <a href="{% url 'core:user_profile' pk=request.user.username %}">
 	                    <img src="{% static 'img/user.png' %}" style="max-width:40px;" class="rounded-circle" alt="User Name">
+	                  </a>
 	                  {% endif %}
 	                {% endfor %}
 	              {% else %}
+	              <a href="{% url 'core:user_profile' pk=request.user.username %}">
 	                <img src="{% static 'img/user.png' %}" style="max-width:40px;" class="rounded-circle" alt="User Name">
+	              </a>
 	              {% endif %}
 	              {% if msg %}
 	              <span class="alert_photo_dropdown" alt="Complete seu perfil">
