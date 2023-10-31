@@ -37,33 +37,38 @@ const postContainer = document.getElementById('posts-container')
 const loading = document.querySelector('.loader');
 const filter = document.getElementById('filter');
 
-let limit = 5;
+let limit = 10;
 let page = 1;
 
-async function getPosts () {
-  const res = await fetch(
-    `https://jsonplaceholder.typicode.com/posts?_limit=${limit}&_page=${page}`
-  );
+async function getPosts() {
+/* `https://jsonplaceholder.typicode.com/posts?_limit=${limit}&_page=${page}`*/
+const res =  fetch(
+    `http://192.168.102.13:8000/api/?page=${page}`
+  ).then((response) => {
+    response.json().then((dados) => {
+        dados.results.map((result) => {
+            postContainer.innerHTML += `
+                <div class="post">
+                  <div class="post-info">
+                    <h2 class="post-title">${result.id}</h2>
+                    <p class="post-body">
+                        <ul class="row">
+                            <li class="col text-center">${result.num1}</li>
+                            <li class="col text-center">${result.num2}</li>
+                            <li class="col text-center">${result.num3}</li>
+                            <li class="col text-center">${result.num4}</li>
+                            <li class="col text-center">${result.num5}</li>
+                            <li class="col text-center">${result.num6}</li>
+                        </ul>
+                    </p>
+                    <small class="text-danger">${result.date}</small>
+                  </div>
+                </div>
+            `;
+        })
+    })
+  })
 
-  const data = await res.json();
-
-  return data;
-}
-
-async function showPosts() {
-  const posts = await getPosts()
-  posts.forEach(post => {
-    const postEl = document.createElement('div');
-    postEl.classList.add('post');
-    postEl.innerHTML = `
-      <div class="post-info">
-        <h2 class="post-title">${post.title}</h2>
-        <p class="post-body">${post.body}</p>
-      </div>
-    `;
-
-    postContainer.appendChild(postEl)
-  });
 }
 
 
@@ -82,7 +87,7 @@ function filterPosts(e) {
     }
   });
 }
-showPosts()
+getPosts()
 
 
 function showLoading() {
@@ -93,9 +98,9 @@ function showLoading() {
 
     setTimeout(() => {
       page++;
-      showPosts();
-    }, 300);
-  }, 1000)
+      getPosts();
+    }, 30);
+  }, 100)
 }
 
 window.addEventListener('scroll', () => {

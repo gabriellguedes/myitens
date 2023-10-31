@@ -295,10 +295,6 @@
 }
 
 @media only screen and (max-width: 428px) and (min-width: 395px){
-    body{
-      max-height: 100vh;
-      overflow: hidden;
-    }
     .display-none{
     	display: none !important;
     }

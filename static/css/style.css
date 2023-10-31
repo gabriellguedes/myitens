@@ -81,6 +81,7 @@ input{
 #wrap-header {
   z-index: 1000;
   position: fixed;
+  top:0;
   display: block;
   width: 100%;
   max-height: 75px;
@@ -140,19 +141,18 @@ input{
   margin-right: 10px;
 }
 #photo-dropdown{
-  width: 40px;
-  height: 40px;
-  min-width: 40px;
-  min-height: 40px;
+  min-width: 45px;
+  min-height: 45px;
   border: 2px solid;
-  max-height: 40px;
+  max-height: 45px;
+  max-width: 45px;
   border-radius: 50%;
   overflow: hidden;
   color: rgb(3, 168, 162, 0.9);
 }
-#photo-dropdown img{
+#photo-dropdown div img{
   width: 100%;
-  height: 100%;
+  height: 45px;
   object-fit: cover;
 }
 .alert_photo_dropdown{
@@ -345,12 +345,12 @@ input{
 }
 /*******  2.3 - Main - Cadastro  **********/
 #container-feed{
-  max-width: 470px;
   height: 100vh;
 }
 #main-feed{
   position: relative;
-  top: 50px;
+  min-height: 100vh;
+  top: 45px;
 }
 #navigation-footer{
   width: 100%;
@@ -673,9 +673,9 @@ div[name="preview"].hidee {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   border-radius: 3px;
   padding: 20px;
-  margin: 40px 0;
+  margin: 10px 0;
   display: flex;
-  width: 80vw;
+  width: 100vw;
   max-width: 800px;
 }
 

@@ -30,10 +30,7 @@ def user_login(request):
 			username = request.POST["username"]
 			password = form.cleaned_data.get("password")
 			user = authenticate(request, username=username, password=password)
-			print("...")
-			print("Visualizar o conteúdo da variavel user ... ")
-			print(user)
-			print("...")
+
 			if user is not None:
 				login(request, user)
 				return HttpResponseRedirect(reverse( 'core:home'))
